@@ -326,6 +326,7 @@ class Data:
 
         self.xsteprev = 200
         self.xmicrostep = 2
+        self.xmotorcurrent = 1
         self.xpulleynum = 1
         self.xpulleyden = 1
         self.xleadscrew = 20
@@ -342,6 +343,7 @@ class Data:
 
         self.ysteprev = 200
         self.ymicrostep = 2
+        self.ymotorcurrent = 1
         self.ypulleynum = 1
         self.ypulleyden = 1
         self.yleadscrew = 20
@@ -359,6 +361,7 @@ class Data:
 
         self.zsteprev = 200
         self.zmicrostep = 2
+        self.zmotorcurrent = 1
         self.zpulleynum = 1
         self.zpulleyden = 1
         self.zleadscrew = 20
@@ -378,6 +381,7 @@ class Data:
 
         self.asteprev = 200
         self.amicrostep = 2
+        self.amotorcurrent = 1
         self.apulleynum = 1
         self.apulleyden = 1
         self.aleadscrew = 8
@@ -577,7 +581,10 @@ class Data:
             conv = converters[n.getAttribute('type')]
             text = n.getAttribute('value')
             setattr(self, name, conv(text))
-
+        
+        # find out the PCIe parallel port IO address
+        # find out the PCIe serial port device name, read onboard motor driver setting
+        
         warnings = []
         for f, m in self.md5sums:
             m1 = md5sum(f)
@@ -1220,6 +1227,19 @@ class StepconfApp:
         else:
             self.d.tempexists = 0
 
+#***************
+# Motor Setting
+#***************
+    def moresetting_axis(self, axis):
+        if not self.check_for_rt(): return
+        SIG = self._p
+
+        #self.w.dialogmoresetting.set_title(_("%s Motor Advance Setting") % axis.upper())
+
+        self.w.dialogmoresetting.show_all()
+        result = self.w.dialogmoresetting.run()
+        self.w.dialogmoresetting.hide()
+        
 #**********
 # Axis Test
 #***********

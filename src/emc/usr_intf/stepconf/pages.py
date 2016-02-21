@@ -521,12 +521,14 @@ class Pages:
     # AXIS X callbacks
     def on_xsteprev_changed(self, *args): self.a.update_pps('x')
     def on_xmicrostep_changed(self, *args): self.a.update_pps('x')
+    def on_xmotorcurrent_changed(self, *args): self.a.update_pps('x')
     def on_xpulleyden_changed(self, *args): self.a.update_pps('x')
     def on_xpulleynum_changed(self, *args): self.a.update_pps('x')
     def on_xleadscrew_changed(self, *args): self.a.update_pps('x')
     def on_xmaxvel_changed(self, *args): self.a.update_pps('x')
     def on_xmaxacc_changed(self, *args): self.a.update_pps('x')
     def on_xaxistest_clicked(self, *args): self.a.test_axis('x')
+    def on_xmoresetting_clicked(self, *args): self.a.moresetting_axis('x')
 
 #********************
 # AXIS Y
@@ -538,12 +540,14 @@ class Pages:
     # AXIS Y callbacks
     def on_ysteprev_changed(self, *args): self.a.update_pps('y')
     def on_ymicrostep_changed(self, *args): self.a.update_pps('y')
+    def on_ymotorcurrent_changed(self, *args): self.a.update_pps('y')
     def on_ypulleyden_changed(self, *args): self.a.update_pps('y')
     def on_ypulleynum_changed(self, *args): self.a.update_pps('y')
     def on_yleadscrew_changed(self, *args): self.a.update_pps('y')
     def on_ymaxvel_changed(self, *args): self.a.update_pps('y')
     def on_ymaxacc_changed(self, *args): self.a.update_pps('y')
     def on_yaxistest_clicked(self, *args): self.a.test_axis('y')
+    def on_ymoresetting_clicked(self, *args): self.a.moresetting_axis('y')
 
 #********************
 # AXIS Z PAGE
@@ -555,12 +559,14 @@ class Pages:
     # AXIS Z callbacks
     def on_zsteprev_changed(self, *args): self.a.update_pps('z')
     def on_zmicrostep_changed(self, *args): self.a.update_pps('z')
+    def on_zmotorcurrent_changed(self, *args): self.a.update_pps('z')
     def on_zpulleyden_changed(self, *args): self.a.update_pps('z')
     def on_zpulleynum_changed(self, *args): self.a.update_pps('z')
     def on_zleadscrew_changed(self, *args): self.a.update_pps('z')
     def on_zmaxvel_changed(self, *args): self.a.update_pps('z')
     def on_zmaxacc_changed(self, *args): self.a.update_pps('z')
     def on_zaxistest_clicked(self, *args): self.a.test_axis('z')
+    def on_zmoresetting_clicked(self, *args): self.a.moresetting_axis('z')
 
 #********************
 # AXIS A PAGE
@@ -572,12 +578,14 @@ class Pages:
     # AXIS A callbacks
     def on_asteprev_changed(self, *args): self.a.update_pps('a')
     def on_amicrostep_changed(self, *args): self.a.update_pps('a')
+    def on_amotorcurrent_changed(self, *args): self.a.update_pps('a')
     def on_apulleyden_changed(self, *args): self.a.update_pps('a')
     def on_apulleynum_changed(self, *args): self.a.update_pps('a')
     def on_aleadscrew_changed(self, *args): self.a.update_pps('a')
     def on_amaxvel_changed(self, *args): self.a.update_pps('a')
     def on_amaxacc_changed(self, *args): self.a.update_pps('a')
     def on_aaxistest_clicked(self, *args): self.a.test_axis('a')
+    def on_amoresetting_clicked(self, *args): self.a.moresetting_axis('a')
 
 #*********************
 # General Axis methods and callbacks
@@ -607,6 +615,7 @@ class Pages:
         SIG = self._p
         set_text("steprev")
         set_text("microstep")
+        set_text("motorcurrent")
         set_text("pulleynum")
         set_text("pulleyden")
         set_text("leadscrew")
@@ -654,6 +663,7 @@ class Pages:
         def get_active(n): self.d[axis + n] = self.w[axis + n].get_active()
         get_text("steprev")
         get_text("microstep")
+        get_text("motorcurrent")
         get_text("pulleynum")
         get_text("pulleyden")
         get_text("leadscrew")

@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy project-wide -->
+  <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkTable" id="axisy">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="n_rows">17</property>
+    <property name="n_rows">18</property>
     <property name="n_columns">4</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkLabel" id="yscaleunits">
         <property name="visible">True</property>
@@ -17,10 +34,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">16</property>
-        <property name="bottom_attach">17</property>
+        <property name="top_attach">17</property>
+        <property name="bottom_attach">18</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -33,7 +50,7 @@
       </object>
       <packing>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -48,7 +65,23 @@
         <property name="top_attach">1</property>
         <property name="bottom_attach">2</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label98a">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="xalign">0</property>
+        <property name="label" translatable="yes">Motor Driver C_urrent:</property>
+        <property name="use_underline">True</property>
+        <property name="mnemonic_widget">ymotorcurrent</property>
+      </object>
+      <packing>
+        <property name="top_attach">2</property>
+        <property name="bottom_attach">3</property>
+        <property name="x_options">GTK_FILL</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -60,10 +93,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">2</property>
-        <property name="bottom_attach">3</property>
+        <property name="top_attach">3</property>
+        <property name="bottom_attach">4</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -75,10 +108,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">3</property>
-        <property name="bottom_attach">4</property>
+        <property name="top_attach">4</property>
+        <property name="bottom_attach">5</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -90,10 +123,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">4</property>
-        <property name="bottom_attach">5</property>
+        <property name="top_attach">5</property>
+        <property name="bottom_attach">6</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -105,10 +138,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">5</property>
-        <property name="bottom_attach">6</property>
+        <property name="top_attach">6</property>
+        <property name="bottom_attach">7</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -120,10 +153,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">13</property>
-        <property name="bottom_attach">14</property>
+        <property name="top_attach">14</property>
+        <property name="bottom_attach">15</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -135,10 +168,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">14</property>
-        <property name="bottom_attach">15</property>
+        <property name="top_attach">15</property>
+        <property name="bottom_attach">16</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -148,8 +181,6 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
         <signal name="changed" handler="on_ymicrostep_changed" swapped="no"/>
       </object>
       <packing>
@@ -157,7 +188,24 @@
         <property name="right_attach">2</property>
         <property name="top_attach">1</property>
         <property name="bottom_attach">2</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="ymotorcurrent">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="invisible_char">●</property>
+        <property name="primary_icon_activatable">False</property>
+        <property name="secondary_icon_activatable">False</property>
+        <signal name="changed" handler="on_ymotorcurrent_changed" swapped="no"/>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="right_attach">2</property>
+        <property name="top_attach">2</property>
+        <property name="bottom_attach">3</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -167,16 +215,14 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
         <signal name="changed" handler="on_ypulleyden_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">2</property>
-        <property name="bottom_attach">3</property>
-        <property name="y_options"></property>
+        <property name="top_attach">3</property>
+        <property name="bottom_attach">4</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -186,16 +232,14 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
         <signal name="changed" handler="on_ypulleynum_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">2</property>
-        <property name="bottom_attach">3</property>
-        <property name="y_options"></property>
+        <property name="top_attach">3</property>
+        <property name="bottom_attach">4</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -205,16 +249,14 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
         <signal name="changed" handler="on_yleadscrew_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">3</property>
-        <property name="bottom_attach">4</property>
-        <property name="y_options"></property>
+        <property name="top_attach">4</property>
+        <property name="bottom_attach">5</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -224,16 +266,14 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
         <signal name="changed" handler="on_ymaxvel_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">4</property>
-        <property name="bottom_attach">5</property>
-        <property name="y_options"></property>
+        <property name="top_attach">5</property>
+        <property name="bottom_attach">6</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -243,16 +283,14 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
         <signal name="changed" handler="on_ymaxacc_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">5</property>
-        <property name="bottom_attach">6</property>
-        <property name="y_options"></property>
+        <property name="top_attach">6</property>
+        <property name="bottom_attach">7</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -263,10 +301,10 @@
         <property name="label" translatable="yes">Pulse rate at max speed:</property>
       </object>
       <packing>
-        <property name="top_attach">15</property>
-        <property name="bottom_attach">16</property>
+        <property name="top_attach">16</property>
+        <property name="bottom_attach">17</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -281,10 +319,10 @@
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">13</property>
-        <property name="bottom_attach">14</property>
+        <property name="top_attach">14</property>
+        <property name="bottom_attach">15</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
         <property name="x_padding">4</property>
       </packing>
     </child>
@@ -300,10 +338,10 @@
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">14</property>
-        <property name="bottom_attach">15</property>
+        <property name="top_attach">15</property>
+        <property name="bottom_attach">16</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
         <property name="x_padding">4</property>
       </packing>
     </child>
@@ -319,10 +357,10 @@
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">15</property>
-        <property name="bottom_attach">16</property>
+        <property name="top_attach">16</property>
+        <property name="bottom_attach">17</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
         <property name="x_padding">4</property>
       </packing>
     </child>
@@ -335,10 +373,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">7</property>
-        <property name="bottom_attach">8</property>
+        <property name="top_attach">8</property>
+        <property name="bottom_attach">9</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -350,10 +388,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">9</property>
-        <property name="bottom_attach">10</property>
+        <property name="top_attach">10</property>
+        <property name="bottom_attach">11</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -365,10 +403,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">10</property>
-        <property name="bottom_attach">11</property>
+        <property name="top_attach">11</property>
+        <property name="bottom_attach">12</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -380,10 +418,27 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">11</property>
-        <property name="bottom_attach">12</property>
+        <property name="top_attach">12</property>
+        <property name="bottom_attach">13</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label113a">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">A</property>
+        <property name="use_underline">True</property>
+        <property name="justify">center</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="right_attach">3</property>
+        <property name="top_attach">2</property>
+        <property name="bottom_attach">3</property>
+        <property name="x_options">GTK_FILL</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -397,10 +452,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">3</property>
-        <property name="top_attach">2</property>
-        <property name="bottom_attach">3</property>
+        <property name="top_attach">3</property>
+        <property name="bottom_attach">4</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -418,8 +473,8 @@
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">11</property>
-        <property name="bottom_attach">12</property>
+        <property name="top_attach">12</property>
+        <property name="bottom_attach">13</property>
         <property name="x_options">GTK_FILL</property>
         <property name="y_options">GTK_FILL</property>
       </packing>
@@ -431,15 +486,13 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">7</property>
-        <property name="bottom_attach">8</property>
-        <property name="y_options"></property>
+        <property name="top_attach">8</property>
+        <property name="bottom_attach">9</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -449,15 +502,13 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">9</property>
-        <property name="bottom_attach">10</property>
-        <property name="y_options"></property>
+        <property name="top_attach">10</property>
+        <property name="bottom_attach">11</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -467,15 +518,13 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">10</property>
-        <property name="bottom_attach">11</property>
-        <property name="y_options"></property>
+        <property name="top_attach">11</property>
+        <property name="bottom_attach">12</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -487,10 +536,10 @@
         <property name="use_underline">True</property>
       </object>
       <packing>
-        <property name="top_attach">8</property>
-        <property name="bottom_attach">9</property>
+        <property name="top_attach">9</property>
+        <property name="bottom_attach">10</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -500,15 +549,13 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">8</property>
-        <property name="bottom_attach">9</property>
-        <property name="y_options"></property>
+        <property name="top_attach">9</property>
+        <property name="bottom_attach">10</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -522,10 +569,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">3</property>
-        <property name="top_attach">8</property>
-        <property name="bottom_attach">9</property>
+        <property name="top_attach">9</property>
+        <property name="bottom_attach">10</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -535,15 +582,13 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
       </object>
       <packing>
         <property name="left_attach">3</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">8</property>
-        <property name="bottom_attach">9</property>
-        <property name="y_options"></property>
+        <property name="top_attach">9</property>
+        <property name="bottom_attach">10</property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -553,14 +598,12 @@
         <property name="invisible_char">●</property>
         <property name="primary_icon_activatable">False</property>
         <property name="secondary_icon_activatable">False</property>
-        <property name="primary_icon_sensitive">True</property>
-        <property name="secondary_icon_sensitive">True</property>
         <signal name="changed" handler="on_ysteprev_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -571,8 +614,8 @@
       </object>
       <packing>
         <property name="right_attach">4</property>
-        <property name="top_attach">6</property>
-        <property name="bottom_attach">7</property>
+        <property name="top_attach">7</property>
+        <property name="bottom_attach">8</property>
         <property name="x_options">GTK_FILL</property>
         <property name="y_options">GTK_FILL</property>
       </packing>
@@ -585,8 +628,8 @@
       </object>
       <packing>
         <property name="right_attach">4</property>
-        <property name="top_attach">12</property>
-        <property name="bottom_attach">13</property>
+        <property name="top_attach">13</property>
+        <property name="bottom_attach">14</property>
         <property name="x_options">GTK_FILL</property>
         <property name="y_options">GTK_FILL</property>
       </packing>
@@ -601,10 +644,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">3</property>
-        <property name="bottom_attach">4</property>
+        <property name="top_attach">4</property>
+        <property name="bottom_attach">5</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -617,10 +660,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">4</property>
-        <property name="bottom_attach">5</property>
+        <property name="top_attach">5</property>
+        <property name="bottom_attach">6</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -633,10 +676,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">5</property>
-        <property name="bottom_attach">6</property>
+        <property name="top_attach">6</property>
+        <property name="bottom_attach">7</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -649,10 +692,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">14</property>
-        <property name="bottom_attach">15</property>
+        <property name="top_attach">15</property>
+        <property name="bottom_attach">16</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -665,10 +708,10 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">13</property>
-        <property name="bottom_attach">14</property>
+        <property name="top_attach">14</property>
+        <property name="bottom_attach">15</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -681,14 +724,18 @@
       <packing>
         <property name="left_attach">2</property>
         <property name="right_attach">4</property>
-        <property name="top_attach">15</property>
-        <property name="bottom_attach">16</property>
+        <property name="top_attach">16</property>
+        <property name="bottom_attach">17</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
+      <placeholder/>
+    </child>
+    <child>
       <object class="GtkButton" id="yaxistest">
+        <property name="use_action_appearance">False</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -739,8 +786,67 @@
       <packing>
         <property name="left_attach">3</property>
         <property name="right_attach">4</property>
-        <property name="x_options"></property>
-        <property name="y_options"></property>
+        <property name="x_options"/>
+        <property name="y_options"/>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="ymoresetting">
+        <property name="use_action_appearance">False</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_action_appearance">False</property>
+        <signal name="clicked" handler="on_ymoresetting_clicked" swapped="no"/>
+        <child>
+          <object class="GtkAlignment" id="alignment5a">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="xscale">0</property>
+            <property name="yscale">0</property>
+            <child>
+              <object class="GtkHBox" id="hbox9a">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="spacing">2</property>
+                <child>
+                  <object class="GtkImage" id="image9a">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="stock">gtk-execute</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label228a">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">More setting</property>
+                    <property name="use_markup">True</property>
+                    <property name="use_underline">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="right_attach">4</property>
+        <property name="top_attach">2</property>
+        <property name="bottom_attach">3</property>
+        <property name="x_options"/>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -751,10 +857,10 @@
         <property name="label" translatable="yes">Axis SCALE:</property>
       </object>
       <packing>
-        <property name="top_attach">16</property>
-        <property name="bottom_attach">17</property>
+        <property name="top_attach">17</property>
+        <property name="bottom_attach">18</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
       </packing>
     </child>
     <child>
@@ -768,21 +874,12 @@
       <packing>
         <property name="left_attach">1</property>
         <property name="right_attach">2</property>
-        <property name="top_attach">16</property>
-        <property name="bottom_attach">17</property>
+        <property name="top_attach">17</property>
+        <property name="bottom_attach">18</property>
         <property name="x_options">GTK_FILL</property>
-        <property name="y_options"></property>
+        <property name="y_options"/>
         <property name="x_padding">4</property>
       </packing>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
     </child>
     <child>
       <placeholder/>
