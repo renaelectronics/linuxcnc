@@ -582,7 +582,7 @@
             </child>
             <child>
               <object class="GtkHScale" id="hscaleofftime">
-                <property name="width_request">320</property>
+                <property name="width_request">350</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">offtime_adjust</property>
@@ -599,7 +599,7 @@
             </child>
             <child>
               <object class="GtkHScale" id="hscaleminimumofftime">
-                <property name="width_request">320</property>
+                <property name="width_request">350</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">minimum_offtime_adjust</property>
@@ -616,7 +616,7 @@
             </child>
             <child>
               <object class="GtkHScale" id="hscaleminimumontime">
-                <property name="width_request">320</property>
+                <property name="width_request">350</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">minimum_ontime_adjust</property>
@@ -721,7 +721,7 @@
             </child>
             <child>
               <object class="GtkHScale" id="hscaledrivecurrent">
-                <property name="width_request">320</property>
+                <property name="width_request">350</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">drivercurrent_adjust</property>
@@ -742,12 +742,14 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">A</property>
+                <property name="ellipsize">start</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
                 <property name="right_attach">3</property>
                 <property name="top_attach">1</property>
                 <property name="bottom_attach">2</property>
+                <property name="x_options">GTK_EXPAND</property>
               </packing>
             </child>
             <child>
@@ -800,7 +802,7 @@
   <object class="GtkImage" id="image3a1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="stock">gnome-stock-line-in</property>
+    <property name="stock">gtk-connect</property>
   </object>
   <object class="GtkAdjustment" id="minimum_offtime_adjust">
     <property name="lower">0.5</property>
