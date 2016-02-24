@@ -41,8 +41,21 @@ import gobject
 import shutil
 import time
 from multifilebuilder import MultiFileBuilder
-
+from subprocess import Popen, PIPE
 import traceback
+
+# helper function
+def run_cmd(cmd):
+    """
+    Execute the external command and get its exitcode, stdout and stderr.
+    eg. out = run_cmd(cmd)
+    """
+    proc = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+    out, err = proc.communicate()
+    exitcode = proc.returncode
+    #
+    return out
+
 # otherwise, on hardy the user is shown spurious "[application] closed
 # unexpectedly" messages but denied the ability to actually "report [the]
 # problem"
@@ -254,7 +267,7 @@ class Data:
         self.latency = 15000
         self.period = 25000
 
-        self.ioaddr = "0"
+        self.ioaddr = "0x0"
         self.ioaddr2 = "1"
         self.pp2_direction = 0 # output
         self.ioaddr3 = "2"
@@ -415,6 +428,11 @@ class Data:
         self.halui = 0
         self.createsymlink = 1
         self.createshortcut = 1
+
+        # fix up to find ioaddr it is a Rena PCIe Stepper Driver
+        cmd_out = run_cmd("echo -n e100")
+        if cmd_out:
+            self.ioaddr = cmd_out
 
     # change the XYZ axis defaults to metric or imperial
     # This only sets data that makes sense to change eg gear ratio don't change

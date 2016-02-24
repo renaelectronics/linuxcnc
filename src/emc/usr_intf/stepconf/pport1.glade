@@ -40,6 +40,9 @@
       <row>
         <col id="0" translatable="yes">TB6560 4 axes</col>
       </row>
+      <row>
+        <col id="0" translatable="yes">Rena PCIe Stepper Driver</col>
+      </row>
     </data>
   </object>
   <object class="GtkVBox" id="pport1">
