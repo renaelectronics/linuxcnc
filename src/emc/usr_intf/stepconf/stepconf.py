@@ -430,7 +430,7 @@ class Data:
         self.createshortcut = 1
 
         # fix up to find ioaddr it is a Rena PCIe Stepper Driver
-        cmd_out = run_cmd("echo -n e100")
+        cmd_out = run_cmd("echo -n 0xe100")
         if cmd_out:
             self.ioaddr = cmd_out
 
@@ -978,6 +978,24 @@ class StepconfApp:
         # A axis
         self.w.pin8.set_active(index(SIG.ASTEP))
         self.w.pin9.set_active(index(SIG.ADIR))
+
+    def preset_rena_pcie_stepper_driver_outputs(self):
+        SIG = self._p
+        def index(signal):
+            return self._p.hal_output_names.index(signal)
+        self.w.pin1.set_active(index(SIG.ESTOP))
+        self.w.pin1inv.set_active(1)
+        self.w.pin2.set_active(1)
+        self.w.pin3.set_active(0)
+        self.w.pin4.set_active(3)
+        self.w.pin5.set_active(2)
+        self.w.pin6.set_active(5)
+        self.w.pin7.set_active(4)
+        self.w.pin8.set_active(7)
+        self.w.pin9.set_active(6)
+        self.w.pin14.set_active(index(SIG.UNUSED_OUTPUT))
+        self.w.pin16.set_active(index(SIG.UNUSED_OUTPUT))
+        self.w.pin17.set_active(index(SIG.UNUSED_OUTPUT))
 
     # check for spindle output signals
     def has_spindle_speed_control(self):
