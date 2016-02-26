@@ -428,12 +428,7 @@ class Data:
         self.halui = 0
         self.createsymlink = 1
         self.createshortcut = 1
-
-        # fix up to find ioaddr it is a Rena PCIe Stepper Driver
-        cmd_out = run_cmd("echo -n 0xe100")
-        if cmd_out:
-            self.ioaddr = cmd_out
-
+        
     # change the XYZ axis defaults to metric or imperial
     # This only sets data that makes sense to change eg gear ratio don't change
     def set_axis_unit_defaults(self, units=True):
@@ -599,10 +594,7 @@ class Data:
             conv = converters[n.getAttribute('type')]
             text = n.getAttribute('value')
             setattr(self, name, conv(text))
-        
-        # find out the PCIe parallel port IO address
-        # find out the PCIe serial port device name, read onboard motor driver setting
-        
+                
         warnings = []
         for f, m in self.md5sums:
             m1 = md5sum(f)
@@ -980,6 +972,7 @@ class StepconfApp:
         self.w.pin9.set_active(index(SIG.ADIR))
 
     def preset_rena_pcie_stepper_driver_outputs(self):
+        # fixup pins assignement
         SIG = self._p
         def index(signal):
             return self._p.hal_output_names.index(signal)
@@ -996,6 +989,11 @@ class StepconfApp:
         self.w.pin14.set_active(index(SIG.UNUSED_OUTPUT))
         self.w.pin16.set_active(index(SIG.UNUSED_OUTPUT))
         self.w.pin17.set_active(index(SIG.UNUSED_OUTPUT))
+
+        # fixup to find ioaddr it is a Rena PCIe Stepper Driver
+        cmd_out = run_cmd("echo -n 0xe100")
+        if cmd_out:
+            self.w.ioaddr.set_text(cmd_out)
 
     # check for spindle output signals
     def has_spindle_speed_control(self):

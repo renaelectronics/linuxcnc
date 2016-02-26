@@ -432,6 +432,10 @@ class Pages:
         self.w.ioaddr.set_text(self.d.ioaddr)
         self._p.in_pport_prepare = False
 
+        # fixup preset preset_rena_pcie_stepper_driver_outputs
+        self.w.preset_combo.set_active(4)
+        self.a.preset_rena_pcie_stepper_driver_outputs()
+
     def pport1_finish(self):
         for pin in (10,11,12,13,15):
             p = 'pin%d' % pin
