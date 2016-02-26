@@ -1,0 +1,6 @@
+open terminal
+stepconf
+click forward a few page
+click the close window 
+click no
+window disppear but the process is still running
