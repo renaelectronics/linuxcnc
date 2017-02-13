@@ -991,7 +991,7 @@ class StepconfApp:
         self.w.pin17.set_active(index(SIG.UNUSED_OUTPUT))
 
         # fixup to find ioaddr it is a Rena PCIe Stepper Driver
-        cmd_string = "lspci -v -d 1c00:3250 | grep 'I/O ports at' | grep size=4 |cut -d \" \" -f 4"
+        cmd_string = "lspci -v -d 1c00:3050 | grep 'I/O ports at' | grep size=4 |cut -d \" \" -f 4"
         cmd_out = run_cmd(cmd_string)
         if cmd_out:
             self.w.ioaddr.set_text("0x"+cmd_out.rstrip())
