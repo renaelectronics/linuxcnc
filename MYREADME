@@ -1,0 +1,4 @@
+# to install new stepconf
+cd linuxcnc/src/emc/usr_intf/stepconf
+./copy_file.sh
+
