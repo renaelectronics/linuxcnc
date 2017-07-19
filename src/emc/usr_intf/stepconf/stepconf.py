@@ -43,6 +43,7 @@ import time
 from multifilebuilder import MultiFileBuilder
 from subprocess import Popen, PIPE
 import traceback
+import string
 
 # helper function
 def run_cmd(cmd):
@@ -55,6 +56,54 @@ def run_cmd(cmd):
     exitcode = proc.returncode
     #
     return out
+
+# read motor setting
+def read_motor_setting(motor):
+        # motor eeprom setting offset
+        EEPROM_ABS_POS = 0
+        EEPROM_EL_POS = (EEPROM_ABS_POS + 3*2)
+        EEPROM_MARK = (EEPROM_EL_POS + 2*2)
+        EEPROM_TVAL = (EEPROM_MARK + 3*2)
+        EEPROM_T_FAST = (EEPROM_TVAL + 1*2)
+        EEPROM_TON_MIN = (EEPROM_T_FAST + 1*2)
+        EEPROM_TOFF_MIN = (EEPROM_TON_MIN + 1*2)
+        EEPROM_ADC_OUT = (EEPROM_TOFF_MIN + 1*2)
+        EEPROM_OCD_TH = (EEPROM_ADC_OUT + 1*2)
+        EEPROM_STEP_MODE = (EEPROM_OCD_TH + 1*2)
+        EEPROM_ALARM_EN = (EEPROM_STEP_MODE + 1*2)
+        EEPROM_CONFIG = (EEPROM_ALARM_EN + 1*2)
+        EEPROM_STATUS = (EEPROM_CONFIG + 2*2)
+        EEPROM_CHECK_SUM = (EEPROM_STATUS + 2*2)
+        EEPROM_MAX_BYTE = (EEPROM_CHECK_SUM + 1*2)
+
+        # read motor setting
+        cmd_string = "wch6474 -r -m " + motor
+        cmd_out = run_cmd(cmd_string)
+        if cmd_out:
+                # remove all whitespace
+                cmd_out = cmd_out.translate(None, string.whitespace)
+                # checkout the lenght
+                if len(cmd_out) != EEPROM_MAX_BYTE:
+                        return None
+
+                # process the data into dictionary
+                dict = {}
+                dict['EEPROM_ABS_POS'] = cmd_out[EEPROM_ABS_POS:EEPROM_EL_POS]
+                dict['EEPROM_EL_POS'] = cmd_out[EEPROM_EL_POS:EEPROM_MARK]
+                dict['EEPROM_MARK'] = cmd_out[EEPROM_MARK:EEPROM_TVAL]
+                dict['EEPROM_TVAL'] = cmd_out[EEPROM_TVAL:EEPROM_T_FAST]
+                dict['EEPROM_T_FAST'] = cmd_out[EEPROM_T_FAST:EEPROM_TON_MIN]
+                dict['EEPROM_TON_MIN'] = cmd_out[EEPROM_TON_MIN:EEPROM_TOFF_MIN]
+                dict['EEPROM_TOFF_MIN'] = cmd_out[EEPROM_TOFF_MIN:EEPROM_ADC_OUT]
+                dict['EEPROM_ADC_OUT'] = cmd_out[EEPROM_ADC_OUT:EEPROM_OCD_TH]
+                dict['EEPROM_OCD_TH'] = cmd_out[EEPROM_OCD_TH:EEPROM_STEP_MODE]
+                dict['EEPROM_STEP_MODE'] = cmd_out[EEPROM_STEP_MODE:EEPROM_ALARM_EN]
+                dict['EEPROM_ALARM_EN'] = cmd_out[EEPROM_ALARM_EN:EEPROM_CONFIG]
+                dict['EEPROM_CONFIG'] = cmd_out[EEPROM_CONFIG:EEPROM_STATUS]
+                dict['EEPROM_STATUS'] = cmd_out[EEPROM_STATUS:EEPROM_CHECK_SUM]
+                return dict
+
+        return None
 
 # otherwise, on hardy the user is shown spurious "[application] closed
 # unexpectedly" messages but denied the ability to actually "report [the]
@@ -337,9 +386,12 @@ class Data:
             p = 'pp2_pin%d_in_inv' % pin
             self[p] = 0
 
+	# read motor setting
+	xmotor_setting_dict = read_motor_setting('0')
+
         self.xsteprev = 200
-        self.xmicrostep = 2
-        self.xmotorcurrent = 1
+        self.xmicrostep = 1 << (int(xmotor_setting_dict['EEPROM_STEP_MODE'], 16) & 0x3)
+	self.xmotorcurrent = 0.03125 * int(xmotor_setting_dict['EEPROM_TVAL'], 16)
         self.xpulleynum = 1
         self.xpulleyden = 1
         self.xleadscrew = 20
