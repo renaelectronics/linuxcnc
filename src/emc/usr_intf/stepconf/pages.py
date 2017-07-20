@@ -61,6 +61,16 @@ class Pages:
         cur = self.w.notebook1.get_current_page()
         u = cur+1
         cur_name,cur_text,cur_state = self._p.available_page[cur]
+        # if cur_name is axisx/y/z/a then prompt user to save motor setting
+        if cur_name == 'axisx':
+                self.a.d.write_motor_setting('0')
+        if cur_name == 'axisy':
+                self.a.d.write_motor_setting('1')
+        if cur_name == 'axisz':
+                self.a.d.write_motor_setting('2')
+        if cur_name == 'axisa':
+                self.a.d.write_motor_setting('3')
+ 
         while u < len(self._p.available_page):
             name,text,state = self._p.available_page[u]
             dbg( "FWD search %s,%s,%s,%s,of %d pages"%(u,name,text,state,len(self._p.available_page)-1))

@@ -57,54 +57,6 @@ def run_cmd(cmd):
     #
     return out
 
-# read motor setting
-def read_motor_setting(motor):
-        # motor eeprom setting offset
-        EEPROM_ABS_POS = 0
-        EEPROM_EL_POS = (EEPROM_ABS_POS + 3*2)
-        EEPROM_MARK = (EEPROM_EL_POS + 2*2)
-        EEPROM_TVAL = (EEPROM_MARK + 3*2)
-        EEPROM_T_FAST = (EEPROM_TVAL + 1*2)
-        EEPROM_TON_MIN = (EEPROM_T_FAST + 1*2)
-        EEPROM_TOFF_MIN = (EEPROM_TON_MIN + 1*2)
-        EEPROM_ADC_OUT = (EEPROM_TOFF_MIN + 1*2)
-        EEPROM_OCD_TH = (EEPROM_ADC_OUT + 1*2)
-        EEPROM_STEP_MODE = (EEPROM_OCD_TH + 1*2)
-        EEPROM_ALARM_EN = (EEPROM_STEP_MODE + 1*2)
-        EEPROM_CONFIG = (EEPROM_ALARM_EN + 1*2)
-        EEPROM_STATUS = (EEPROM_CONFIG + 2*2)
-        EEPROM_CHECK_SUM = (EEPROM_STATUS + 2*2)
-        EEPROM_MAX_BYTE = (EEPROM_CHECK_SUM + 1*2)
-
-        # read motor setting
-        cmd_string = "wch6474 -r -m " + motor
-        cmd_out = run_cmd(cmd_string)
-        if cmd_out:
-                # remove all whitespace
-                cmd_out = cmd_out.translate(None, string.whitespace)
-                # checkout the lenght
-                if len(cmd_out) != EEPROM_MAX_BYTE:
-                        return None
-
-                # process the data into dictionary
-                dict = {}
-                dict['EEPROM_ABS_POS'] = cmd_out[EEPROM_ABS_POS:EEPROM_EL_POS]
-                dict['EEPROM_EL_POS'] = cmd_out[EEPROM_EL_POS:EEPROM_MARK]
-                dict['EEPROM_MARK'] = cmd_out[EEPROM_MARK:EEPROM_TVAL]
-                dict['EEPROM_TVAL'] = cmd_out[EEPROM_TVAL:EEPROM_T_FAST]
-                dict['EEPROM_T_FAST'] = cmd_out[EEPROM_T_FAST:EEPROM_TON_MIN]
-                dict['EEPROM_TON_MIN'] = cmd_out[EEPROM_TON_MIN:EEPROM_TOFF_MIN]
-                dict['EEPROM_TOFF_MIN'] = cmd_out[EEPROM_TOFF_MIN:EEPROM_ADC_OUT]
-                dict['EEPROM_ADC_OUT'] = cmd_out[EEPROM_ADC_OUT:EEPROM_OCD_TH]
-                dict['EEPROM_OCD_TH'] = cmd_out[EEPROM_OCD_TH:EEPROM_STEP_MODE]
-                dict['EEPROM_STEP_MODE'] = cmd_out[EEPROM_STEP_MODE:EEPROM_ALARM_EN]
-                dict['EEPROM_ALARM_EN'] = cmd_out[EEPROM_ALARM_EN:EEPROM_CONFIG]
-                dict['EEPROM_CONFIG'] = cmd_out[EEPROM_CONFIG:EEPROM_STATUS]
-                dict['EEPROM_STATUS'] = cmd_out[EEPROM_STATUS:EEPROM_CHECK_SUM]
-                return dict
-
-        return None
-
 # otherwise, on hardy the user is shown spurious "[application] closed
 # unexpectedly" messages but denied the ability to actually "report [the]
 # problem"
@@ -387,11 +339,10 @@ class Data:
             self[p] = 0
 
 	# read motor setting
-	xmotor_setting_dict = read_motor_setting('0')
-
         self.xsteprev = 200
-        self.xmicrostep = 1 << (int(xmotor_setting_dict['EEPROM_STEP_MODE'], 16) & 0x3)
-	self.xmotorcurrent = 0.03125 * int(xmotor_setting_dict['EEPROM_TVAL'], 16)
+        motor_setting_dict = self.read_motor_setting('0')
+        self.xmicrostep = motor_setting_dict['EEPROM_STEP_MODE']
+        self.xmotorcurrent = motor_setting_dict['EEPROM_TVAL']
         self.xpulleynum = 1
         self.xpulleyden = 1
         self.xleadscrew = 20
@@ -407,8 +358,9 @@ class Data:
         self.xscale = 0
 
         self.ysteprev = 200
-        self.ymicrostep = 2
-        self.ymotorcurrent = 1
+        motor_setting_dict = self.read_motor_setting('1')
+        self.ymicrostep = motor_setting_dict['EEPROM_STEP_MODE']
+        self.ymotorcurrent = motor_setting_dict['EEPROM_TVAL']
         self.ypulleynum = 1
         self.ypulleyden = 1
         self.yleadscrew = 20
@@ -425,8 +377,9 @@ class Data:
 
 
         self.zsteprev = 200
-        self.zmicrostep = 2
-        self.zmotorcurrent = 1
+        motor_setting_dict = self.read_motor_setting('2')
+        self.zmicrostep = motor_setting_dict['EEPROM_STEP_MODE']
+        self.zmotorcurrent = motor_setting_dict['EEPROM_TVAL']
         self.zpulleynum = 1
         self.zpulleyden = 1
         self.zleadscrew = 20
@@ -445,8 +398,9 @@ class Data:
         self.set_axis_unit_defaults(True)
 
         self.asteprev = 200
-        self.amicrostep = 2
-        self.amotorcurrent = 1
+        motor_setting_dict = self.read_motor_setting('3')
+        self.amicrostep = motor_setting_dict['EEPROM_STEP_MODE']
+        self.amotorcurrent = motor_setting_dict['EEPROM_TVAL']
         self.apulleynum = 1
         self.apulleyden = 1
         self.aleadscrew = 8
@@ -480,6 +434,92 @@ class Data:
         self.halui = 0
         self.createsymlink = 1
         self.createshortcut = 1
+
+    # write motor setting
+    def write_motor_setting(self, motor):
+        cmd_string = "wch6474 -m " + motor 
+
+        if (motor == '0'):
+            cmd_string = cmd_string + " -c "
+            cmd_string = cmd_string + str(self.xmotorcurrent)
+            cmd_string = cmd_string + " -s "
+            cmd_string = cmd_string + str(int(math.log(self.xmicrostep, 2)))
+
+        if (motor == '1'):
+            cmd_string = cmd_string + " -c "
+            cmd_string = cmd_string + str(self.ymotorcurrent)
+            cmd_string = cmd_string + " -s "
+            cmd_string = cmd_string + str(int(math.log(self.ymicrostep, 2)))
+
+
+        if (motor == '2'):
+            cmd_string = cmd_string + " -c "
+            cmd_string = cmd_string + str(self.zmotorcurrent)
+            cmd_string = cmd_string + " -s "
+            cmd_string = cmd_string + str(int(math.log(self.zmicrostep, 2)))
+
+
+        if (motor == '3'):
+            cmd_string = cmd_string + " -c "
+            cmd_string = cmd_string + str(self.amotorcurrent)
+            cmd_string = cmd_string + " -s "
+            cmd_string = cmd_string + str(int(math.log(self.amicrostep, 2)))
+
+        print cmd_string
+        #cmd_out = run_cmd(cmd_string)
+        return
+
+    # read motor setting
+    def read_motor_setting(self, motor):
+        # motor eeprom setting offset
+        EEPROM_ABS_POS = 0
+        EEPROM_EL_POS = (EEPROM_ABS_POS + 3*2)
+        EEPROM_MARK = (EEPROM_EL_POS + 2*2)
+        EEPROM_TVAL = (EEPROM_MARK + 3*2)
+        EEPROM_T_FAST = (EEPROM_TVAL + 1*2)
+        EEPROM_TON_MIN = (EEPROM_T_FAST + 1*2)
+        EEPROM_TOFF_MIN = (EEPROM_TON_MIN + 1*2)
+        EEPROM_ADC_OUT = (EEPROM_TOFF_MIN + 1*2)
+        EEPROM_OCD_TH = (EEPROM_ADC_OUT + 1*2)
+        EEPROM_STEP_MODE = (EEPROM_OCD_TH + 1*2)
+        EEPROM_ALARM_EN = (EEPROM_STEP_MODE + 1*2)
+        EEPROM_CONFIG = (EEPROM_ALARM_EN + 1*2)
+        EEPROM_STATUS = (EEPROM_CONFIG + 2*2)
+        EEPROM_CHECK_SUM = (EEPROM_STATUS + 2*2)
+        EEPROM_MAX_BYTE = (EEPROM_CHECK_SUM + 1*2)
+
+        # read motor setting
+        cmd_string = "wch6474 -r -m " + motor
+        cmd_out = run_cmd(cmd_string)
+        if cmd_out:
+            # remove all whitespace
+            cmd_out = cmd_out.translate(None, string.whitespace)
+            # checkout the lenght
+            if len(cmd_out) != EEPROM_MAX_BYTE:
+                return None
+
+            # process the data into dictionary
+            dict = {}
+            dict['EEPROM_ABS_POS'] = cmd_out[EEPROM_ABS_POS:EEPROM_EL_POS]
+            dict['EEPROM_EL_POS'] = cmd_out[EEPROM_EL_POS:EEPROM_MARK]
+            dict['EEPROM_MARK'] = cmd_out[EEPROM_MARK:EEPROM_TVAL]
+            dict['EEPROM_TVAL'] = cmd_out[EEPROM_TVAL:EEPROM_T_FAST]
+            dict['EEPROM_T_FAST'] = cmd_out[EEPROM_T_FAST:EEPROM_TON_MIN]
+            dict['EEPROM_TON_MIN'] = cmd_out[EEPROM_TON_MIN:EEPROM_TOFF_MIN]
+            dict['EEPROM_TOFF_MIN'] = cmd_out[EEPROM_TOFF_MIN:EEPROM_ADC_OUT]
+            dict['EEPROM_ADC_OUT'] = cmd_out[EEPROM_ADC_OUT:EEPROM_OCD_TH]
+            dict['EEPROM_OCD_TH'] = cmd_out[EEPROM_OCD_TH:EEPROM_STEP_MODE]
+            dict['EEPROM_STEP_MODE'] = cmd_out[EEPROM_STEP_MODE:EEPROM_ALARM_EN]
+            dict['EEPROM_ALARM_EN'] = cmd_out[EEPROM_ALARM_EN:EEPROM_CONFIG]
+            dict['EEPROM_CONFIG'] = cmd_out[EEPROM_CONFIG:EEPROM_STATUS]
+            dict['EEPROM_STATUS'] = cmd_out[EEPROM_STATUS:EEPROM_CHECK_SUM]
+
+            # convert raw data into interge or float
+            dict['EEPROM_TVAL'] = 0.03125 * int(dict['EEPROM_TVAL'], 16)
+            dict['EEPROM_STEP_MODE'] = 1 << (int(dict['EEPROM_STEP_MODE'], 16) & 0x3)
+            return dict
+
+        return None
         
     # change the XYZ axis defaults to metric or imperial
     # This only sets data that makes sense to change eg gear ratio don't change
