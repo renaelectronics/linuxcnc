@@ -6,3 +6,4 @@ sudo cp pages.py /usr/lib/pymodules/python2.7/stepconf/pages.py
 sudo cp pages.py /usr/share/pyshared/pncconf/pages.py
 sudo cp pages.py /usr/share/pyshared/stepconf/pages.py
 
+
