@@ -745,6 +745,12 @@ class Pages:
     def finished_finish(self):
         self.a.buid_config()
 
+#*******************
+# MORE SETTING PAGE
+#*******************
+    def on_okbutton1a_clicked(self,widget):
+        return
+
 # BOILER CODE
     def __getitem__(self, item):
         return getattr(self, item)

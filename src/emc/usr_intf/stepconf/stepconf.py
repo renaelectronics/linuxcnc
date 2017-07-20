@@ -1129,6 +1129,7 @@ class StepconfApp:
 
     # for Axis page calculation updates
     def update_pps(self, axis):
+        print "update pps"
         def get(n): return float(self.w[axis + n].get_text())
         self.axis_sanity_test(axis)
         try:
@@ -1159,7 +1160,7 @@ class StepconfApp:
     def axis_sanity_test(self,axis):
         def get(n): return float(self.w[axis + n].get_text())
         datalist = ('steprev','microstep','pulleynum','pulleyden','leadscrew',
-                    'maxvel','maxacc')
+                    'maxvel','maxacc','motorcurrent')
         for i in datalist:
             try:
                 a=get(i)
