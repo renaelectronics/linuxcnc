@@ -751,7 +751,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="xmotor_pmwofftime">
+      <object class="GtkLabel" id="xmotor_pmw_offtime">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="xalign">0</property>
@@ -866,13 +866,14 @@
     </child>
     <!-- hscale -->
     <child>
-      <object class="GtkHScale" id="xmotor_hscaledrivecurrent">
+      <object class="GtkHScale" id="xmotor_hscale_motor_current">
         <property name="width_request">350</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="adjustment">xmotor_current_adjust</property>
         <property name="digits">5</property>
         <property name="round_digits">5</property>
+        <signal name="value-changed" handler="on_xmotor_hscale_motor_current_value_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
@@ -884,12 +885,13 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHScale" id="xmotor_hscaleofftime">
+      <object class="GtkHScale" id="xmotor_hscale_offtime">
         <property name="width_request">350</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="adjustment">xmotor_offtime_adjust</property>
         <property name="round_digits">1</property>
+        <signal name="value-changed" handler="on_xmotor_hscale_offtime_value_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
@@ -901,12 +903,13 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHScale" id="xmotor_hscaleminimumofftime">
+      <object class="GtkHScale" id="xmotor_hscale_mini_offtime">
         <property name="width_request">350</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="adjustment">xmotor_minimum_offtime_adjust</property>
+        <property name="adjustment">xmotor_mini_offtime_adjust</property>
         <property name="round_digits">1</property>
+        <signal name="value-changed" handler="on_xmotor_hscale_mini_offtime_value_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
@@ -918,12 +921,13 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHScale" id="xmotor_hscaleminimumontime">
+      <object class="GtkHScale" id="xmotor_hscale_mini_ontime">
         <property name="width_request">350</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="adjustment">xmotor_minimum_ontime_adjust</property>
+        <property name="adjustment">xmotor_mini_ontime_adjust</property>
         <property name="round_digits">1</property>
+        <signal name="value-changed" handler="on_xmotor_hscale_mini_ontime_value_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
@@ -936,235 +940,75 @@
     </child>
     <!-- reset to default button -->
     <child>
-      <object class="GtkButton" id="xmotor_default">
+      <object class="GtkRadioButton" id="xmotor_radio_default_current">
+        <property name="label" translatable="yes">default</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
+        <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
-        <signal name="clicked" handler="on_xmotor_default_clicked" swapped="no"/>
-        <child>
-          <object class="GtkAlignment" id="alignment_xmotor_default">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="xscale">0</property>
-            <property name="yscale">0</property>
-            <child>
-              <object class="GtkHBox" id="hbox_xmotor_default">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="spacing">2</property>
-                <child>
-                  <object class="GtkImage" id="image_xmotor_default">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-undo</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label_xmotor_default">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Reset to Default</property>
-                    <property name="use_markup">True</property>
-                    <property name="use_underline">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+        <signal name="toggled" handler="on_xmotor_radio_default_current_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
         <property name="right_attach">4</property>
         <property name="top_attach">2</property>
         <property name="bottom_attach">3</property>
-        <property name="x_options"/>
-        <property name="y_options"/>
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="xmotor_pwm_offtime">
+      <object class="GtkRadioButton" id="xmotor_radio_default_offtime">
+        <property name="label" translatable="yes">default</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
+        <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
-        <signal name="clicked" handler="on_xmotor_pwm_offtime_clicked" swapped="no"/>
-        <child>
-          <object class="GtkAlignment" id="alignment_xmotor_default">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="xscale">0</property>
-            <property name="yscale">0</property>
-            <child>
-              <object class="GtkHBox" id="hbox_xmotor_default">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="spacing">2</property>
-                <child>
-                  <object class="GtkImage" id="image_xmotor_pwm_offtime">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-undo</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label_xmotor_pwm_offtime">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Reset to Default</property>
-                    <property name="use_markup">True</property>
-                    <property name="use_underline">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+        <signal name="toggled" handler="on_xmotor_radio_default_offtime_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
         <property name="right_attach">4</property>
         <property name="top_attach">3</property>
         <property name="bottom_attach">4</property>
-        <property name="x_options"/>
-        <property name="y_options"/>
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="xmotor_pwm_minofftime">
+      <object class="GtkRadioButton" id="xmotor_radio_default_mini_offtime">
+        <property name="label" translatable="yes">default</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
+        <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
-        <signal name="clicked" handler="on_xmotor_pwm_minofftime_clicked" swapped="no"/>
-        <child>
-          <object class="GtkAlignment" id="alignment_xmotor_default">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="xscale">0</property>
-            <property name="yscale">0</property>
-            <child>
-              <object class="GtkHBox" id="hbox_xmotor_default">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="spacing">2</property>
-                <child>
-                  <object class="GtkImage" id="image_xmotor_pwm_minofftime">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-undo</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label_xmotor_pwm_minofftime">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Reset to Default</property>
-                    <property name="use_markup">True</property>
-                    <property name="use_underline">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+        <signal name="toggled" handler="on_xmotor_radio_default_mini_offtime_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
         <property name="right_attach">4</property>
         <property name="top_attach">4</property>
         <property name="bottom_attach">5</property>
-        <property name="x_options"/>
-        <property name="y_options"/>
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="xmotor_pwm_minontime">
+      <object class="GtkRadioButton" id="xmotor_radio_default_mini_ontime">
+        <property name="label" translatable="yes">default</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
+        <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
-        <signal name="clicked" handler="on_xmotor_pwm_minontime_clicked" swapped="no"/>
-        <child>
-          <object class="GtkAlignment" id="alignment_xmotor_default">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="xscale">0</property>
-            <property name="yscale">0</property>
-            <child>
-              <object class="GtkHBox" id="hbox_xmotor_default">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="spacing">2</property>
-                <child>
-                  <object class="GtkImage" id="image_xmotor_pwm_minontime">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-undo</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label_xmotor_pwm_minontime">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Reset to Default</property>
-                    <property name="use_markup">True</property>
-                    <property name="use_underline">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+        <signal name="toggled" handler="on_xmotor_radio_default_mini_ontime_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
         <property name="right_attach">4</property>
         <property name="top_attach">5</property>
         <property name="bottom_attach">6</property>
-        <property name="x_options"/>
-        <property name="y_options"/>
       </packing>
     </child>
     <!-- END: add scale for current,offtime,minimum off/on time -->
@@ -1227,12 +1071,12 @@
     <property name="upper">124</property>
     <property name="step_increment">4</property>
   </object>
-  <object class="GtkAdjustment" id="xmotor_minimum_offtime_adjust">
+  <object class="GtkAdjustment" id="xmotor_mini_offtime_adjust">
     <property name="lower">0.5</property>
     <property name="upper">64</property>
     <property name="step_increment">0.5</property>
   </object>
-  <object class="GtkAdjustment" id="xmotor_minimum_ontime_adjust">
+  <object class="GtkAdjustment" id="xmotor_mini_ontime_adjust">
     <property name="lower">0.5</property>
     <property name="upper">64</property>
     <property name="step_increment">0.5</property>
