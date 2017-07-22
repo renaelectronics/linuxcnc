@@ -940,31 +940,12 @@
     </child>
     <!-- reset to default button -->
     <child>
-      <object class="GtkRadioButton" id="xmotor_radio_default_current">
-        <property name="label" translatable="yes">default</property>
+      <object class="GtkCheckButton" id="xmotor_radio_default_offtime">
+        <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="active">True</property>
-        <property name="draw_indicator">True</property>
-        <signal name="toggled" handler="on_xmotor_radio_default_current_toggled" swapped="no"/>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="right_attach">4</property>
-        <property name="top_attach">2</property>
-        <property name="bottom_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkRadioButton" id="xmotor_radio_default_offtime">
-        <property name="label" translatable="yes">default</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">False</property>
-        <property name="use_action_appearance">False</property>
-        <property name="active">True</property>
         <property name="draw_indicator">True</property>
         <signal name="toggled" handler="on_xmotor_radio_default_offtime_toggled" swapped="no"/>
       </object>
@@ -976,13 +957,12 @@
       </packing>
     </child>
     <child>
-      <object class="GtkRadioButton" id="xmotor_radio_default_mini_offtime">
-        <property name="label" translatable="yes">default</property>
+      <object class="GtkCheckButton" id="xmotor_radio_default_mini_offtime">
+        <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="active">True</property>
         <property name="draw_indicator">True</property>
         <signal name="toggled" handler="on_xmotor_radio_default_mini_offtime_toggled" swapped="no"/>
       </object>
@@ -994,13 +974,12 @@
       </packing>
     </child>
     <child>
-      <object class="GtkRadioButton" id="xmotor_radio_default_mini_ontime">
-        <property name="label" translatable="yes">default</property>
+      <object class="GtkCheckButton" id="xmotor_radio_default_mini_ontime">
+        <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
-        <property name="active">True</property>
         <property name="draw_indicator">True</property>
         <signal name="toggled" handler="on_xmotor_radio_default_mini_ontime_toggled" swapped="no"/>
       </object>
