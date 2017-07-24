@@ -940,14 +940,14 @@
     </child>
     <!-- reset to default button -->
     <child>
-      <object class="GtkCheckButton" id="xmotor_radio_default_offtime">
+      <object class="GtkCheckButton" id="xmotor_hscale_offtime_default">
         <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
         <property name="draw_indicator">True</property>
-        <signal name="toggled" handler="on_xmotor_radio_default_offtime_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_xmotor_hscale_offtime_default_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -957,14 +957,14 @@
       </packing>
     </child>
     <child>
-      <object class="GtkCheckButton" id="xmotor_radio_default_mini_offtime">
+      <object class="GtkCheckButton" id="xmotor_hscale_mini_offtime_default">
         <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
         <property name="draw_indicator">True</property>
-        <signal name="toggled" handler="on_xmotor_radio_default_mini_offtime_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_xmotor_hscale_mini_offtime_default_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -974,14 +974,14 @@
       </packing>
     </child>
     <child>
-      <object class="GtkCheckButton" id="xmotor_radio_default_mini_ontime">
+      <object class="GtkCheckButton" id="xmotor_hscale_mini_ontime_default">
         <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
         <property name="draw_indicator">True</property>
-        <signal name="toggled" handler="on_xmotor_radio_default_mini_ontime_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_xmotor_hscale_mini_ontime_default_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>

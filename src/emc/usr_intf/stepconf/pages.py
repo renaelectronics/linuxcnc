@@ -516,6 +516,7 @@ class Pages:
 #*******************
     def axisx_prepare(self):
         self.axis_prepare('x')
+        self.axis_manage_default('x')
     def axisx_finish(self):
         self.axis_done('x')
     # AXIS X callbacks
@@ -527,6 +528,12 @@ class Pages:
     def on_xmaxvel_changed(self, *args): self.a.update_pps('x')
     def on_xmaxacc_changed(self, *args): self.a.update_pps('x')
     def on_xaxistest_clicked(self, *args): self.a.test_axis('x')
+    def on_xmotor_hscale_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('x', 'motor_hscale_offtime')
+    def on_xmotor_hscale_mini_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('x', 'motor_hscale_mini_offtime')
+    def on_xmotor_hscale_mini_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('x', 'motor_hscale_mini_ontime')
 
 #********************
 # AXIS Y
@@ -601,6 +608,32 @@ class Pages:
     def update_axis_params(self, *args):
         self.a.update_axis_test()
 
+    def lock_unlock_scale(self, axis, n):
+        if self.w[axis + n + '_default'].get_active():
+                # change the data to default
+                self.d[axis + n] = self.d[n + '_default']
+                self.w[axis + n].set_value(self.d[axis + n])
+                # hscale not sensitive
+                self.w[axis + n].set_sensitive(False)
+        else:
+                # hscale sensitive
+                self.w[axis + n ].set_sensitive(True)
+        
+    def axis_manage_default(self, axis):
+        def set_sensitive(n):
+            if self.d[axis + n] == self.d[n + '_default']:
+                # turn on checkout box
+                self.w[axis + n + '_default'].set_active(True)
+                # hscale not sensitive
+                self.w[axis + n ].set_sensitive(False)
+            else:
+                # turn off checkout box
+                self.w[axis + n + '_default'].set_active(False)
+        set_sensitive('motor_hscale_offtime')
+        set_sensitive('motor_hscale_mini_offtime')
+        set_sensitive('motor_hscale_mini_ontime')
+
+
     def axis_prepare(self, axis):
         def set_text(n): self.w[axis + n].set_text("%s" % self.d[axis + n])
         def set_active(n): self.w[axis + n].set_active(self.d[axis + n])
@@ -619,8 +652,12 @@ class Pages:
         set_text("homesw")
         set_text("homevel")
         set_active("latchdir")
-        # BEGIN: motor scale setting
+        # BEGIN: motor setting
         set_value("motor_hscale_current")
+        set_value("motor_hscale_offtime")
+        set_value("motor_hscale_mini_offtime")
+        set_value("motor_hscale_mini_ontime")
+        # END: motor setting
 
         if axis == "a":
             self.w[axis + "screwunits"].set_text(_("degree / rev"))

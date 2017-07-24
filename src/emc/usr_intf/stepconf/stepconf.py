@@ -325,7 +325,17 @@ class Data:
             self[p] = 0
 
         # BEGIN: motor setting
-        self.xmotor_hscale_current = 0.03125 * 32
+        # default value
+        self.motor_current_default = 0.03125 *32
+        self.motor_hscale_offtime_default = 4 * 11
+        self.motor_hscale_mini_offtime_default = 0.5 * 41
+        self.motor_hscale_mini_ontime_default = 0.5 * 41
+        # x motor setting
+        self.xmotor_hscale_current = self.motor_current_default
+        self.xmotor_hscale_offtime = self.motor_hscale_offtime_default
+        self.xmotor_hscale_mini_offtime = self.motor_hscale_mini_offtime_default
+        self.xmotor_hscale_mini_ontime = self.motor_hscale_mini_ontime_default
+        # END: motor setting
 
         self.xsteprev = 200
         self.xmicrostep = 2
