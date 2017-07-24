@@ -1044,21 +1044,25 @@
     <property name="lower">0.03125</property>
     <property name="upper">4</property>
     <property name="step_increment">0.03125</property>
+    <property name="page_increment">0.03125</property>
   </object>
   <object class="GtkAdjustment" id="xmotor_offtime_adjust">
     <property name="lower">4</property>
     <property name="upper">124</property>
     <property name="step_increment">4</property>
+    <property name="page_increment">4</property>
   </object>
   <object class="GtkAdjustment" id="xmotor_mini_offtime_adjust">
     <property name="lower">0.5</property>
     <property name="upper">64</property>
     <property name="step_increment">0.5</property>
+    <property name="page_increment">0.5</property>
   </object>
   <object class="GtkAdjustment" id="xmotor_mini_ontime_adjust">
     <property name="lower">0.5</property>
     <property name="upper">64</property>
     <property name="step_increment">0.5</property>
+    <property name="page_increment">0.5</property>
   </object>
   <!-- END: Add range for hscale -->
 </interface>

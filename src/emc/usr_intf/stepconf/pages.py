@@ -528,12 +528,22 @@ class Pages:
     def on_xmaxvel_changed(self, *args): self.a.update_pps('x')
     def on_xmaxacc_changed(self, *args): self.a.update_pps('x')
     def on_xaxistest_clicked(self, *args): self.a.test_axis('x')
+    # checkbox handler
     def on_xmotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('x', 'motor_hscale_offtime')
     def on_xmotor_hscale_mini_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('x', 'motor_hscale_mini_offtime')
     def on_xmotor_hscale_mini_ontime_default_toggled(self, *args):
         self.lock_unlock_scale('x', 'motor_hscale_mini_ontime')
+    # hscale handler
+    def on_xmotor_hscale_current_value_changed(self, *args):
+        self.hscale_value_changed('x', 'motor_hscale_current')
+    def on_xmotor_hscale_offtime_value_changed(self, *args):
+        self.hscale_value_changed('x', 'motor_hscale_offtime')
+    def on_xmotor_hscale_mini_offtime_value_changed(self, *args):
+        self.hscale_value_changed('x', 'motor_hscale_mini_offtime')
+    def on_xmotor_hscale_mini_ontime_value_changed(self, *args):
+        self.hscale_value_changed('x', 'motor_hscale_mini_ontime')
 
 #********************
 # AXIS Y
@@ -633,6 +643,13 @@ class Pages:
         set_sensitive('motor_hscale_mini_offtime')
         set_sensitive('motor_hscale_mini_ontime')
 
+    def hscale_value_changed(self, axis, n): 
+        w = self.w[axis + n]
+        step_inc =  w.get_adjustment().get_step_increment()
+        step = int(w.get_value() / step_inc)
+        self.d[axis + n] = step * step_inc
+        w.set_value(self.d[axis +n])
+        self.a.update_pps(axis)
 
     def axis_prepare(self, axis):
         def set_text(n): self.w[axis + n].set_text("%s" % self.d[axis + n])
