@@ -41,6 +41,9 @@ import gobject
 import shutil
 import time
 from multifilebuilder import MultiFileBuilder
+from subprocess import Popen, PIPE
+import traceback
+import string
 
 # helper function
 def run_cmd(cmd):
@@ -54,7 +57,7 @@ def run_cmd(cmd):
     #
     return out
 
-import traceback
+
 # otherwise, on hardy the user is shown spurious "[application] closed
 # unexpectedly" messages but denied the ability to actually "report [the]
 # problem"

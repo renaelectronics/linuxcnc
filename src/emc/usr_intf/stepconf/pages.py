@@ -431,6 +431,9 @@ class Pages:
         self.w.pin1.grab_focus()
         self.w.ioaddr.set_text(self.d.ioaddr)
         self._p.in_pport_prepare = False
+        # fixup preset preset_rena_pcie_stepper_driver_outputs
+        self.w.preset_combo.set_active(4)
+        self.a.preset_rena_pcie_stepper_driver_outputs()
 
     def pport1_finish(self):
         for pin in (10,11,12,13,15):
@@ -451,7 +454,6 @@ class Pages:
 
     def on_preselect_button_clicked(self, widget):
         state = self.w.preset_combo.get_active()
-        print state
         if state == 0:
             self.a.preset_sherline_outputs()
         elif state ==1:
