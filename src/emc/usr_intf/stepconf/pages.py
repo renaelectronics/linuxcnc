@@ -460,6 +460,8 @@ class Pages:
             self.a.preset_tb6560_3axes_outputs()
         elif state ==3:
             self.a.preset_tb6560_4axes_outputs()
+        elif state ==4:
+            self.a.preset_rena_pcie_stepper_driver_outputs()
 
 #************
 # pport2 PAGE
