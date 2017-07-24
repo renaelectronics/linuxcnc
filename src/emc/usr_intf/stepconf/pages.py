@@ -516,7 +516,6 @@ class Pages:
 #*******************
     def axisx_prepare(self):
         self.axis_prepare('x')
-        self.axis_manage_default('x')
     def axisx_finish(self):
         self.axis_done('x')
     # AXIS X callbacks
@@ -528,7 +527,7 @@ class Pages:
     def on_xmaxvel_changed(self, *args): self.a.update_pps('x')
     def on_xmaxacc_changed(self, *args): self.a.update_pps('x')
     def on_xaxistest_clicked(self, *args): self.a.test_axis('x')
-    # checkbox handler
+    # BEGIN: checkbox and hscale handler
     def on_xmotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('x', 'motor_hscale_offtime')
     def on_xmotor_hscale_mini_offtime_default_toggled(self, *args):
@@ -544,6 +543,7 @@ class Pages:
         self.hscale_value_changed('x', 'motor_hscale_mini_offtime')
     def on_xmotor_hscale_mini_ontime_value_changed(self, *args):
         self.hscale_value_changed('x', 'motor_hscale_mini_ontime')
+    # END: checkbox and hscale handler
 
 #********************
 # AXIS Y
@@ -675,7 +675,6 @@ class Pages:
         set_value("motor_hscale_mini_offtime")
         set_value("motor_hscale_mini_ontime")
         # END: motor setting
-
         if axis == "a":
             self.w[axis + "screwunits"].set_text(_("degree / rev"))
             self.w[axis + "velunits"].set_text(_("deg / s"))
@@ -705,6 +704,7 @@ class Pages:
 
         self.w[axis + "steprev"].grab_focus()
         gobject.idle_add(lambda: self.a.update_pps(axis))
+        self.axis_manage_default(axis)
 
     def axis_done(self, axis):
         def get_text(n): self.d[axis + n] = float(self.w[axis + n].get_text())
