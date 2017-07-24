@@ -40,6 +40,9 @@
       <row>
         <col id="0" translatable="yes">TB6560 4 axes</col>
       </row>
+      <row>
+        <col id="0" translatable="yes">Rena PCIe Stepper Driver</col>
+      </row>
     </data>
   </object>
   <object class="GtkVBox" id="pport1">
@@ -1111,7 +1114,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="model">pp1_preset_liststore</property>
-            <property name="active">0</property>
+            <property name="active">4</property>
             <child>
               <object class="GtkCellRendererText" id="cellrenderertext13"/>
               <attributes>

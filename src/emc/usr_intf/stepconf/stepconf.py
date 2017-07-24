@@ -42,6 +42,18 @@ import shutil
 import time
 from multifilebuilder import MultiFileBuilder
 
+# helper function
+def run_cmd(cmd):
+    """
+    Execute the external command and get its exitcode, stdout and stderr.
+    eg. out = run_cmd(cmd)
+    """
+    proc = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+    out, err = proc.communicate()
+    exitcode = proc.returncode
+    #
+    return out
+
 import traceback
 # otherwise, on hardy the user is shown spurious "[application] closed
 # unexpectedly" messages but denied the ability to actually "report [the]
@@ -966,6 +978,31 @@ class StepconfApp:
         # A axis
         self.w.pin8.set_active(index(SIG.ASTEP))
         self.w.pin9.set_active(index(SIG.ADIR))
+
+    def preset_rena_pcie_stepper_driver_outputs(self):
+        # fixup pins assignement
+        SIG = self._p
+        def index(signal):
+            return self._p.hal_output_names.index(signal)
+        self.w.pin1.set_active(index(SIG.ESTOP))
+        self.w.pin1inv.set_active(1)
+        self.w.pin2.set_active(index(SIG.XSTEP))
+        self.w.pin3.set_active(index(SIG.XDIR))
+        self.w.pin4.set_active(index(SIG.ASTEP))
+        self.w.pin5.set_active(index(SIG.ADIR))
+        self.w.pin6.set_active(index(SIG.ZSTEP))
+        self.w.pin7.set_active(index(SIG.ZDIR))
+        self.w.pin8.set_active(index(SIG.YSTEP))
+        self.w.pin9.set_active(index(SIG.YDIR))
+        self.w.pin14.set_active(index(SIG.UNUSED_OUTPUT))
+        self.w.pin16.set_active(index(SIG.UNUSED_OUTPUT))
+        self.w.pin17.set_active(index(SIG.UNUSED_OUTPUT))
+
+        # fixup to find ioaddr it is a Rena PCIe Stepper Driver
+        cmd_string = "lspci -v -d 1c00:3050 | grep 'I/O ports at' | grep size=4 |cut -d \" \" -f 4"
+        cmd_out = run_cmd(cmd_string)
+        if cmd_out:
+            self.w.ioaddr.set_text("0x"+cmd_out.rstrip())
 
     # check for spindle output signals
     def has_spindle_speed_control(self):
