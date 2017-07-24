@@ -604,6 +604,7 @@ class Pages:
     def axis_prepare(self, axis):
         def set_text(n): self.w[axis + n].set_text("%s" % self.d[axis + n])
         def set_active(n): self.w[axis + n].set_active(self.d[axis + n])
+        def set_value(n): self.w[axis + n].set_value(self.d[axis + n])
         SIG = self._p
         set_text("steprev")
         set_text("microstep")
@@ -618,6 +619,8 @@ class Pages:
         set_text("homesw")
         set_text("homevel")
         set_active("latchdir")
+        # BEGIN: motor scale setting
+        set_value("motor_hscale_current")
 
         if axis == "a":
             self.w[axis + "screwunits"].set_text(_("degree / rev"))

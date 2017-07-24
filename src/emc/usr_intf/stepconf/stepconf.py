@@ -324,6 +324,9 @@ class Data:
             p = 'pp2_pin%d_in_inv' % pin
             self[p] = 0
 
+        # BEGIN: motor setting
+        self.xmotor_hscale_current = 0.03125 * 32
+
         self.xsteprev = 200
         self.xmicrostep = 2
         self.xpulleynum = 1

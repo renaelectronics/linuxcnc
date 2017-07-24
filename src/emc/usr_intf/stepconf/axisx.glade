@@ -736,7 +736,7 @@
     <!-- BEGIN: add scale for current,offtime,minimum off/on time -->
     <!-- Labels name -->
     <child>
-      <object class="GtkLabel" id="xmotor_current">
+      <object class="GtkLabel" id="xmotor_current_label">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="xalign">0</property>
@@ -751,7 +751,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="xmotor_pmw_offtime">
+      <object class="GtkLabel" id="xmotor_pmw_offtime_label">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="xalign">0</property>
@@ -766,7 +766,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="xmotor_pwm_min_off">
+      <object class="GtkLabel" id="xmotor_pwm_min_off_label">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="xalign">0</property>
@@ -781,7 +781,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="xmotor_pwm_min_on">
+      <object class="GtkLabel" id="xmotor_pwm_min_on_label">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="xalign">0</property>
@@ -866,14 +866,14 @@
     </child>
     <!-- hscale -->
     <child>
-      <object class="GtkHScale" id="xmotor_hscale_motor_current">
+      <object class="GtkHScale" id="xmotor_hscale_current">
         <property name="width_request">350</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="adjustment">xmotor_current_adjust</property>
         <property name="digits">5</property>
         <property name="round_digits">5</property>
-        <signal name="value-changed" handler="on_xmotor_hscale_motor_current_value_changed" swapped="no"/>
+        <signal name="value-changed" handler="on_xmotor_hscale_current_value_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
