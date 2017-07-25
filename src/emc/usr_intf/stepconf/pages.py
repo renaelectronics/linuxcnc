@@ -54,17 +54,26 @@ class Pages:
         else:
             return True
 
-    def page_change(self,widget):
+    def save_motor_setting(self, c):
+        xyza = ['x', 'y', 'z', 'a']
+        n = xyza.index(c)
+        if self.a.d.is_motor_setting_changed(str(n)):
+            if self.a.warning_dialog(self._p.MESS_SAVE_MOTOR_SETTING,False):
+                self.a.d.write_motor_setting(str(n))
+                self.a.d[xyza[n] + 'motor_setting_dict'] = self.a.d.read_motor_setting(str(n))
+                return True
+            else:
+                return False
+        return True
+
+    def page_change(self, widget):
         cur = self.w.notebook1.get_current_page()
         cur_name,cur_text,cur_state = self._p.available_page[cur]
         alist = ['axisx', 'axisy', 'axisz', 'axisa']
         xyza = ['x', 'y', 'z', 'a']
         if cur_name in alist:
             n = alist.index(cur_name)
-            if self.a.d.is_motor_setting_changed(str(n)):
-                if self.a.warning_dialog(self._p.MESS_SAVE_MOTOR_SETTING,False):
-                        self.a.d.write_motor_setting(str(n))
-                        self.a.d[xyza[n] + 'motor_setting_dict'] = self.a.d.read_motor_setting(str(n))
+            self.save_motor_setting(xyza[n])
                 
     # seaches (self._p.available_page) from the current page forward,
     # for the next page that is True or till second-to-last page.
@@ -545,7 +554,8 @@ class Pages:
     def on_xleadscrew_changed(self, *args): self.a.update_pps('x')
     def on_xmaxvel_changed(self, *args): self.a.update_pps('x')
     def on_xmaxacc_changed(self, *args): self.a.update_pps('x')
-    def on_xaxistest_clicked(self, *args): self.a.test_axis('x')
+    def on_xaxistest_clicked(self, *args):
+        if self.save_motor_setting('x'): self.a.test_axis('x')
     # BEGIN: checkbox and hscale handler
     def on_xmotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('x', 'motor_hscale_offtime')
@@ -589,7 +599,8 @@ class Pages:
     def on_yleadscrew_changed(self, *args): self.a.update_pps('y')
     def on_ymaxvel_changed(self, *args): self.a.update_pps('y')
     def on_ymaxacc_changed(self, *args): self.a.update_pps('y')
-    def on_yaxistest_clicked(self, *args): self.a.test_axis('y')
+    def on_yaxistest_clicked(self, *args):
+        if self.save_motor_setting('y'): self.a.test_axis('y')
     # BEGIN: checkbox and hscale handler
     def on_ymotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('y', 'motor_hscale_offtime')
@@ -633,7 +644,8 @@ class Pages:
     def on_zleadscrew_changed(self, *args): self.a.update_pps('z')
     def on_zmaxvel_changed(self, *args): self.a.update_pps('z')
     def on_zmaxacc_changed(self, *args): self.a.update_pps('z')
-    def on_zaxistest_clicked(self, *args): self.a.test_axis('z')
+    def on_zaxistest_clicked(self, *args):
+        if self.save_motor_setting('z'): self.a.test_axis('z')
     # BEGIN: checkbox and hscale handler
     def on_zmotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('z', 'motor_hscale_offtime')
@@ -677,7 +689,8 @@ class Pages:
     def on_aleadscrew_changed(self, *args): self.a.update_pps('a')
     def on_amaxvel_changed(self, *args): self.a.update_pps('a')
     def on_amaxacc_changed(self, *args): self.a.update_pps('a')
-    def on_aaxistest_clicked(self, *args): self.a.test_axis('a')
+    def on_aaxistest_clicked(self, *args):
+        if self.save_motor_setting('a'): self.a.test_axis('a')
     # BEGIN: checkbox and hscale handler
     def on_amotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('a', 'motor_hscale_offtime')
