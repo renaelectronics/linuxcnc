@@ -31,6 +31,7 @@
 import gtk
 import os
 import gobject
+import math
 
 class Pages:
     def __init__(self, app):
@@ -541,12 +542,22 @@ class Pages:
     # hscale handler
     def on_xmotor_hscale_current_value_changed(self, *args):
         self.hscale_value_changed('x', 'motor_hscale_current')
+        self.a.update_pps('x')
     def on_xmotor_hscale_offtime_value_changed(self, *args):
         self.hscale_value_changed('x', 'motor_hscale_offtime')
+        self.a.update_pps('x')
     def on_xmotor_hscale_mini_offtime_value_changed(self, *args):
         self.hscale_value_changed('x', 'motor_hscale_mini_offtime')
+        self.a.update_pps('x')
     def on_xmotor_hscale_mini_ontime_value_changed(self, *args):
         self.hscale_value_changed('x', 'motor_hscale_mini_ontime')
+        self.a.update_pps('x')
+    # combobox handler
+    def on_xmotor_combobox_microstep_changed(self, *args):
+        index =  self.w['xmotor_combobox_microstep'].get_active()
+        self.d['xmicrostep'] = 1 << index
+        self.w['xmicrostep'].set_text("%s" % self.d['xmicrostep'])
+        self.a.update_pps('x')
     # END: checkbox and hscale handler
 
 #********************
@@ -653,7 +664,6 @@ class Pages:
         step = int(w.get_value() / step_inc)
         self.d[axis + n] = step * step_inc
         w.set_value(self.d[axis +n])
-        self.a.update_pps(axis)
 
     def axis_prepare(self, axis):
         def set_text(n): self.w[axis + n].set_text("%s" % self.d[axis + n])
@@ -674,6 +684,8 @@ class Pages:
         set_text("homevel")
         set_active("latchdir")
         # BEGIN: motor setting
+        index = int(math.log(self.d[axis + 'microstep'], 2))
+        self.w[axis + 'motor_combobox_microstep'].set_active(index)
         set_value("motor_hscale_current")
         set_value("motor_hscale_offtime")
         set_value("motor_hscale_mini_offtime")

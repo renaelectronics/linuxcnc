@@ -142,15 +142,14 @@
     <child>
       <object class="GtkEntry" id="xmicrostep">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
+        <property name="can_focus">False</property>
         <property name="invisible_char">&#x25CF;</property>
         <property name="primary_icon_sensitive">True</property>
         <property name="secondary_icon_sensitive">True</property>
-        <signal name="changed" handler="on_xmicrostep_changed"/>
       </object>
       <packing>
-        <property name="left_attach">1</property>
-        <property name="right_attach">2</property>
+        <property name="left_attach">3</property>
+        <property name="right_attach">4</property>
         <property name="top_attach">1</property>
         <property name="bottom_attach">2</property>
         <property name="y_options"></property>
@@ -864,7 +863,27 @@
         <property name="y_options"/>
       </packing>
     </child>
-    <!-- hscale -->
+    <!-- combobox, hscale -->
+    <child>
+      <object class="GtkComboBox" id="xmotor_combobox_microstep">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="model">xmotor_microstep_liststore</property>
+        <signal name="changed" handler="on_xmotor_combobox_microstep_changed" swapped="no"/>
+        <child>
+          <object class="GtkCellRendererText" id="cellrenderertext_microstep"/>
+          <attributes>
+            <attribute name="text">0</attribute>
+          </attributes>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="right_attach">2</property>
+        <property name="top_attach">1</property>
+        <property name="bottom_attach">2</property>
+      </packing>
+    </child>
     <child>
       <object class="GtkHScale" id="xmotor_hscale_current">
         <property name="width_request">350</property>
@@ -1039,7 +1058,30 @@
       </row>
     </data>
   </object>
-  <!-- BEGIN: Add range for hscale -->
+  <!-- BEGIN: liststore and adjustment -->
+  <object class="GtkListStore" id="xmotor_microstep_liststore">
+    <columns>
+      <!-- column-name gchararray1 -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">1 step</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2 steps</col>
+      </row> 
+      <row>
+        <col id="0" translatable="yes">4 steps</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">8 steps</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">16 steps</col>
+      </row>
+    </data>
+  </object>
   <object class="GtkAdjustment" id="xmotor_current_adjust">
     <property name="lower">0.03125</property>
     <property name="upper">4</property>
@@ -1064,5 +1106,5 @@
     <property name="step_increment">0.5</property>
     <property name="page_increment">0.5</property>
   </object>
-  <!-- END: Add range for hscale -->
+  <!-- END: liststore and adjustment -->
 </interface>

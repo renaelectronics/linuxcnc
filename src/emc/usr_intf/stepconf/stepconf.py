@@ -1093,17 +1093,6 @@ class StepconfApp:
                 self.w[axis+i].modify_base(gtk.STATE_NORMAL, self.w[axis+i].get_colormap().alloc_color("red"))
             else:
                 self.w[axis+i].modify_base(gtk.STATE_NORMAL, self.origbg)
-                # microstep can only be 1,2,4,8,16
-                if i == 'microstep':
-                    valid = False
-                    for num in [1,2,4,8,16]:
-                        if num == get(i):
-                            valid = True
-                            break
-                    if not valid:
-                        self.w[axis+i].modify_base(gtk.STATE_NORMAL, self.w[axis+i].get_colormap().alloc_color("red"))
-                    else:
-                        self.w[axis+i].modify_base(gtk.STATE_NORMAL, self.origbg)
 
     # pport functions
     # disallow some signal combinations
