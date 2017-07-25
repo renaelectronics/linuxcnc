@@ -54,11 +54,27 @@ class Pages:
         else:
             return False
 
+    def page_change(self,widget):
+        cur = self.w.notebook1.get_current_page()
+        cur_name,cur_text,cur_state = self._p.available_page[cur]
+        # if cur_name is axisx/y/z/a then prompt user to save motor setting
+        if cur_name == 'axisx':
+                if self.a.warning_dialog(self._p.MESS_SAVE_MOTOR_SETTING,False):
+                    self.a.d.write_motor_setting('0')
+        if cur_name == 'axisy':
+                self.a.d.write_motor_setting('1')
+        if cur_name == 'axisz':
+                self.a.d.write_motor_setting('2')
+        if cur_name == 'axisa':
+                self.a.d.write_motor_setting('3')
+        return
+
     # seaches (self._p.available_page) from the current page forward,
     # for the next page that is True or till second-to-last page.
     # if state found True: call current page finish function.
     # If that returns False then call the next page prepare function and show page
     def on_button_fwd_clicked(self,widget):
+        self.page_change(widget)
         cur = self.w.notebook1.get_current_page()
         u = cur+1
         cur_name,cur_text,cur_state = self._p.available_page[cur]
@@ -92,6 +108,7 @@ class Pages:
     # if state found True: call current page finish function.
     # If that returns False then call the next page prepare function and show page
     def on_button_back_clicked(self,widget):
+        self.page_change(widget)
         cur = self.w.notebook1.get_current_page()
         u = cur-1
         cur_name,cur_text,cur_state = self._p.available_page[cur]

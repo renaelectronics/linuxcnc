@@ -242,6 +242,7 @@ class Private_Data:
         self.MESS_KERNEL_WRONG = _("You are using a realtime version of LinuxCNC but didn't load a realtime kernel so testing / tuning of hardware is\
                  unavailable.\nThis is possibly because you updated the OS and it doesn't automatically load the RTAI kernel anymore.\n"+
             "You are using the  %(actual)s  kernel.\nYou need to use kernel:")% {'actual':os.uname()[2]}
+        self.MESS_SAVE_MOTOR_SETTING = _("Save motor setting to driver board?")
 
     def __getitem__(self, item):
         return getattr(self, item)
@@ -362,12 +363,12 @@ class Data:
         self.motor_hscale_mini_offtime_default = 0.5 * 42
         self.motor_hscale_mini_ontime_default = 0.5 * 42
         # x motor setting
-        motor_setting_dict = self.read_motor_setting('0')
-        self.xmicrostep = motor_setting_dict['EEPROM_STEP_MODE']
-        self.xmotor_hscale_current = motor_setting_dict['EEPROM_TVAL']
-        self.xmotor_hscale_offtime = motor_setting_dict['EEPROM_CONFIG_CURRENT'] 
-        self.xmotor_hscale_mini_offtime = motor_setting_dict['EEPROM_TOFF_MIN']
-        self.xmotor_hscale_mini_ontime = motor_setting_dict['EEPROM_TON_MIN']
+        self.xmotor_setting_dict = self.read_motor_setting('0')
+        self.xmicrostep = self.xmotor_setting_dict['EEPROM_STEP_MODE']
+        self.xmotor_hscale_current = self.xmotor_setting_dict['EEPROM_TVAL']
+        self.xmotor_hscale_offtime = self.xmotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
+        self.xmotor_hscale_mini_offtime = self.xmotor_setting_dict['EEPROM_TOFF_MIN']
+        self.xmotor_hscale_mini_ontime = self.xmotor_setting_dict['EEPROM_TON_MIN']
         # END: motor setting
 
         self.ysteprev = 200
@@ -441,6 +442,24 @@ class Data:
         self.halui = 0
         self.createsymlink = 1
         self.createshortcut = 1
+
+    # write motor setting
+    def write_motor_setting(self, motor):
+        cmd_string = "wch6474 -m " + motor
+        
+        if (motor == '0'): xyza = 'x'
+        if (motor == '1'): xyza = 'y'
+        if (motor == '2'): xyza = 'z'
+        if (motor == '3'): xyza = 'a'
+
+        cmd_string = cmd_string + " -c "
+        cmd_string = cmd_string + str(self[xyza + 'motor_hscale_current'])
+        cmd_string = cmd_string + " -s "
+        cmd_string = cmd_string + str(int(math.log(self[xyza + 'microstep'], 2)))
+
+        print cmd_string
+        #cmd_out = run_cmd(cmd_string)
+        return
 
     # read motor setting
     def read_motor_setting(self, motor):
