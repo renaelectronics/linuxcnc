@@ -134,7 +134,7 @@
     <child>
       <object class="GtkEntry" id="ymicrostep">
         <property name="visible">False</property>
-        <property name="can_focus">False/</property>
+        <property name="can_focus">False</property>
         <property name="invisible_char">&#x25CF;</property>
         <property name="primary_icon_sensitive">True</property>
         <property name="secondary_icon_sensitive">True</property>

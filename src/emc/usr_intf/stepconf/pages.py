@@ -67,7 +67,6 @@ class Pages:
                 self.a.d.write_motor_setting('2')
         if cur_name == 'axisa':
                 self.a.d.write_motor_setting('3')
-        return
 
     # seaches (self._p.available_page) from the current page forward,
     # for the next page that is True or till second-to-last page.
@@ -593,6 +592,33 @@ class Pages:
     def on_ymaxvel_changed(self, *args): self.a.update_pps('y')
     def on_ymaxacc_changed(self, *args): self.a.update_pps('y')
     def on_yaxistest_clicked(self, *args): self.a.test_axis('y')
+    # BEGIN: checkbox and hscale handler
+    def on_ymotor_hscale_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('y', 'motor_hscale_offtime')
+    def on_ymotor_hscale_mini_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('y', 'motor_hscale_mini_offtime')
+    def on_ymotor_hscale_mini_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('y', 'motor_hscale_mini_ontime')
+    # hscale handler
+    def on_ymotor_hscale_current_value_changed(self, *args):
+        self.hscale_value_changed('y', 'motor_hscale_current')
+        self.a.update_pps('y')
+    def on_ymotor_hscale_offtime_value_changed(self, *args):
+        self.hscale_value_changed('y', 'motor_hscale_offtime')
+        self.a.update_pps('y')
+    def on_ymotor_hscale_mini_offtime_value_changed(self, *args):
+        self.hscale_value_changed('y', 'motor_hscale_mini_offtime')
+        self.a.update_pps('y')
+    def on_ymotor_hscale_mini_ontime_value_changed(self, *args):
+        self.hscale_value_changed('y', 'motor_hscale_mini_ontime')
+        self.a.update_pps('y')
+    # combobox handler
+    def on_ymotor_combobox_microstep_changed(self, *args):
+        index =  self.w['ymotor_combobox_microstep'].get_active()
+        self.d['ymicrostep'] = 1 << index
+        self.w['ymicrostep'].set_text("%s" % self.d['ymicrostep'])
+        self.a.update_pps('y')
+    # END: checkbox and hscale handler
 
 #********************
 # AXIS Z PAGE

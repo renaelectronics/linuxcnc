@@ -387,6 +387,16 @@ class Data:
         self.ylatchdir = 0
         self.yscale = 0
 
+        # BEGIN: motor setting
+        # default value
+        # x motor setting
+        self.ymotor_setting_dict = self.read_motor_setting('0')
+        self.xmicrostep = self.ymotor_setting_dict['EEPROM_STEP_MODE']
+        self.ymotor_hscale_current = self.ymotor_setting_dict['EEPROM_TVAL']
+        self.ymotor_hscale_offtime = self.ymotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
+        self.ymotor_hscale_mini_offtime = self.ymotor_setting_dict['EEPROM_TOFF_MIN']
+        self.ymotor_hscale_mini_ontime = self.ymotor_setting_dict['EEPROM_TON_MIN']
+        # END: motor setting
 
         self.zsteprev = 200
         self.zmicrostep = 2
