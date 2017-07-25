@@ -499,6 +499,7 @@ class Data:
         cmd_string = cmd_string + " --toff_min " + str(self[n + 'motor_hscale_min_offtime'])
         cmd_string = cmd_string + " --ton_min " + str(self[n + 'motor_hscale_min_ontime'])
         # execute command
+        print cmd_string
         cmd_out = run_cmd(cmd_string)
         return
 
@@ -549,7 +550,7 @@ class Data:
 
             # convert raw data into interge or float
             dict['EEPROM_TVAL'] = 0.03125 * int(dict['EEPROM_TVAL'], 16)
-            dict['EEPROM_STEP_MODE'] = 1 << (int(dict['EEPROM_STEP_MODE'], 16) & 0x3)
+            dict['EEPROM_STEP_MODE'] = 1 << (int(dict['EEPROM_STEP_MODE'], 16) & 0x7)
             # motor current is stored in the upper 6 bits of EEPROM_CONFIG
             dict['EEPROM_CONFIG_CURRENT'] = 4 * (int(dict['EEPROM_CONFIG'], 16) >> 10)
             if dict['EEPROM_CONFIG_CURRENT'] == 0:
