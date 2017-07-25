@@ -58,11 +58,14 @@ class Pages:
         cur = self.w.notebook1.get_current_page()
         cur_name,cur_text,cur_state = self._p.available_page[cur]
         alist = ['axisx', 'axisy', 'axisz', 'axisa']
+        xyza = ['x', 'y', 'z', 'a']
         if cur_name in alist:
             n = alist.index(cur_name)
-            if self.a.warning_dialog(self._p.MESS_SAVE_MOTOR_SETTING,False):
-                    self.a.d.write_motor_setting(str(n))
-
+            if self.a.d.is_motor_setting_changed(str(n)):
+                if self.a.warning_dialog(self._p.MESS_SAVE_MOTOR_SETTING,False):
+                        self.a.d.write_motor_setting(str(n))
+                        self.a.d[xyza[n] + 'motor_setting_dict'] = self.a.d.read_motor_setting(str(n))
+                
     # seaches (self._p.available_page) from the current page forward,
     # for the next page that is True or till second-to-last page.
     # if state found True: call current page finish function.

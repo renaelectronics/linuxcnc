@@ -466,25 +466,40 @@ class Data:
         self.createsymlink = 1
         self.createshortcut = 1
 
+    
+    # is motor setting changed
+    def is_motor_setting_changed(self, motor):
+        xyza = ['x', 'y', 'z', 'a']
+        n = xyza[int(motor)]
+        # compare motor setting with dictionary
+        dict = self[n + 'motor_setting_dict']
+        if self[n + 'microstep'] != dict['EEPROM_STEP_MODE']:
+            return True
+        if self[n + 'motor_hscale_current'] != dict['EEPROM_TVAL']:
+            return True
+        if self[n + 'motor_hscale_offtime'] != dict['EEPROM_CONFIG_CURRENT']:
+            return True
+        if self[n + 'motor_hscale_min_offtime'] != dict['EEPROM_TOFF_MIN']:
+            return True
+        if self[n + 'motor_hscale_min_ontime'] != dict['EEPROM_TON_MIN']:
+            return True
+        return False
+
     # write motor setting
     def write_motor_setting(self, motor):
         cmd_string = "wch6474 -m " + motor
-        
-        if (motor == '0'): xyza = 'x'
-        if (motor == '1'): xyza = 'y'
-        if (motor == '2'): xyza = 'z'
-        if (motor == '3'): xyza = 'a'
-
+        xyza = ['x', 'y', 'z', 'a']
+        n = xyza[int(motor)]
+        # build the command string
         cmd_string = cmd_string + " -c "
-        cmd_string = cmd_string + str(self[xyza + 'motor_hscale_current'])
+        cmd_string = cmd_string + str(self[n+ 'motor_hscale_current'])
         cmd_string = cmd_string + " -s "
-        cmd_string = cmd_string + str(int(math.log(self[xyza + 'microstep'], 2)))
-        cmd_string = cmd_string + " --pwm_off " + str(self[xyza + 'motor_hscale_offtime'])
-        cmd_string = cmd_string + " --toff_min " + str(self[xyza + 'motor_hscale_min_offtime'])
-        cmd_string = cmd_string + " --ton_min " + str(self[xyza + 'motor_hscale_min_ontime'])
-
-        print cmd_string
-        #cmd_out = run_cmd(cmd_string)
+        cmd_string = cmd_string + str(int(math.log(self[n + 'microstep'], 2)))
+        cmd_string = cmd_string + " --pwm_off " + str(self[n + 'motor_hscale_offtime'])
+        cmd_string = cmd_string + " --toff_min " + str(self[n + 'motor_hscale_min_offtime'])
+        cmd_string = cmd_string + " --ton_min " + str(self[n + 'motor_hscale_min_ontime'])
+        # execute command
+        cmd_out = run_cmd(cmd_string)
         return
 
     # read motor setting
