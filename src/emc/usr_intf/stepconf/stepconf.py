@@ -360,15 +360,15 @@ class Data:
         # default value
         self.motor_current_default = 0.03125 *32
         self.motor_hscale_offtime_default = 4 * 11
-        self.motor_hscale_mini_offtime_default = 0.5 * 42
-        self.motor_hscale_mini_ontime_default = 0.5 * 42
+        self.motor_hscale_min_offtime_default = 0.5 * 42
+        self.motor_hscale_min_ontime_default = 0.5 * 42
         # x motor setting
         self.xmotor_setting_dict = self.read_motor_setting('0')
         self.xmicrostep = self.xmotor_setting_dict['EEPROM_STEP_MODE']
         self.xmotor_hscale_current = self.xmotor_setting_dict['EEPROM_TVAL']
         self.xmotor_hscale_offtime = self.xmotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
-        self.xmotor_hscale_mini_offtime = self.xmotor_setting_dict['EEPROM_TOFF_MIN']
-        self.xmotor_hscale_mini_ontime = self.xmotor_setting_dict['EEPROM_TON_MIN']
+        self.xmotor_hscale_min_offtime = self.xmotor_setting_dict['EEPROM_TOFF_MIN']
+        self.xmotor_hscale_min_ontime = self.xmotor_setting_dict['EEPROM_TON_MIN']
         # END: motor setting
 
         self.ysteprev = 200
@@ -392,8 +392,8 @@ class Data:
         self.ymicrostep = self.ymotor_setting_dict['EEPROM_STEP_MODE']
         self.ymotor_hscale_current = self.ymotor_setting_dict['EEPROM_TVAL']
         self.ymotor_hscale_offtime = self.ymotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
-        self.ymotor_hscale_mini_offtime = self.ymotor_setting_dict['EEPROM_TOFF_MIN']
-        self.ymotor_hscale_mini_ontime = self.ymotor_setting_dict['EEPROM_TON_MIN']
+        self.ymotor_hscale_min_offtime = self.ymotor_setting_dict['EEPROM_TOFF_MIN']
+        self.ymotor_hscale_min_ontime = self.ymotor_setting_dict['EEPROM_TON_MIN']
         # END: motor setting
 
         self.zsteprev = 200
@@ -417,8 +417,8 @@ class Data:
         self.zmicrostep = self.zmotor_setting_dict['EEPROM_STEP_MODE']
         self.zmotor_hscale_current = self.zmotor_setting_dict['EEPROM_TVAL']
         self.zmotor_hscale_offtime = self.zmotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
-        self.zmotor_hscale_mini_offtime = self.zmotor_setting_dict['EEPROM_TOFF_MIN']
-        self.zmotor_hscale_mini_ontime = self.zmotor_setting_dict['EEPROM_TON_MIN']
+        self.zmotor_hscale_min_offtime = self.zmotor_setting_dict['EEPROM_TOFF_MIN']
+        self.zmotor_hscale_min_ontime = self.zmotor_setting_dict['EEPROM_TON_MIN']
         # END: motor setting
 
         # set xyz axes defaults depending on units true = imperial
@@ -445,8 +445,8 @@ class Data:
         self.amicrostep = self.amotor_setting_dict['EEPROM_STEP_MODE']
         self.amotor_hscale_current = self.amotor_setting_dict['EEPROM_TVAL']
         self.amotor_hscale_offtime = self.amotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
-        self.amotor_hscale_mini_offtime = self.amotor_setting_dict['EEPROM_TOFF_MIN']
-        self.amotor_hscale_mini_ontime = self.amotor_setting_dict['EEPROM_TON_MIN']
+        self.amotor_hscale_min_offtime = self.amotor_setting_dict['EEPROM_TOFF_MIN']
+        self.amotor_hscale_min_ontime = self.amotor_setting_dict['EEPROM_TON_MIN']
         # END: motor setting
 
         self.spindlecarrier = 100
@@ -483,8 +483,8 @@ class Data:
         cmd_string = cmd_string + " -s "
         cmd_string = cmd_string + str(int(math.log(self[xyza + 'microstep'], 2)))
         cmd_string = cmd_string + " --pwm_off " + str(self[xyza + 'motor_hscale_offtime'])
-        cmd_string = cmd_string + " --toff_min " + str(self[xyza + 'motor_hscale_mini_offtime'])
-        cmd_string = cmd_string + " --ton_min " + str(self[xyza + 'motor_hscale_mini_ontime'])
+        cmd_string = cmd_string + " --toff_min " + str(self[xyza + 'motor_hscale_min_offtime'])
+        cmd_string = cmd_string + " --ton_min " + str(self[xyza + 'motor_hscale_min_ontime'])
 
         print cmd_string
         #cmd_out = run_cmd(cmd_string)

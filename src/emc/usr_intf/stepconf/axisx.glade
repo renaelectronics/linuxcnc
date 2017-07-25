@@ -922,13 +922,13 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHScale" id="xmotor_hscale_mini_offtime">
+      <object class="GtkHScale" id="xmotor_hscale_min_offtime">
         <property name="width_request">350</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="adjustment">xmotor_mini_offtime_adjust</property>
+        <property name="adjustment">xmotor_min_offtime_adjust</property>
         <property name="round_digits">1</property>
-        <signal name="value-changed" handler="on_xmotor_hscale_mini_offtime_value_changed" swapped="no"/>
+        <signal name="value-changed" handler="on_xmotor_hscale_min_offtime_value_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
@@ -940,13 +940,13 @@
       </packing>
     </child>
     <child>
-      <object class="GtkHScale" id="xmotor_hscale_mini_ontime">
+      <object class="GtkHScale" id="xmotor_hscale_min_ontime">
         <property name="width_request">350</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="adjustment">xmotor_mini_ontime_adjust</property>
+        <property name="adjustment">xmotor_min_ontime_adjust</property>
         <property name="round_digits">1</property>
-        <signal name="value-changed" handler="on_xmotor_hscale_mini_ontime_value_changed" swapped="no"/>
+        <signal name="value-changed" handler="on_xmotor_hscale_min_ontime_value_changed" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">1</property>
@@ -976,14 +976,14 @@
       </packing>
     </child>
     <child>
-      <object class="GtkCheckButton" id="xmotor_hscale_mini_offtime_default">
+      <object class="GtkCheckButton" id="xmotor_hscale_min_offtime_default">
         <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
         <property name="draw_indicator">True</property>
-        <signal name="toggled" handler="on_xmotor_hscale_mini_offtime_default_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_xmotor_hscale_min_offtime_default_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -993,14 +993,14 @@
       </packing>
     </child>
     <child>
-      <object class="GtkCheckButton" id="xmotor_hscale_mini_ontime_default">
+      <object class="GtkCheckButton" id="xmotor_hscale_min_ontime_default">
         <property name="label" translatable="yes">Default setting</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">False</property>
         <property name="use_action_appearance">False</property>
         <property name="draw_indicator">True</property>
-        <signal name="toggled" handler="on_xmotor_hscale_mini_ontime_default_toggled" swapped="no"/>
+        <signal name="toggled" handler="on_xmotor_hscale_min_ontime_default_toggled" swapped="no"/>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -1094,13 +1094,13 @@
     <property name="step_increment">4</property>
     <property name="page_increment">4</property>
   </object>
-  <object class="GtkAdjustment" id="xmotor_mini_offtime_adjust">
+  <object class="GtkAdjustment" id="xmotor_min_offtime_adjust">
     <property name="lower">0.5</property>
     <property name="upper">64</property>
     <property name="step_increment">0.5</property>
     <property name="page_increment">0.5</property>
   </object>
-  <object class="GtkAdjustment" id="xmotor_mini_ontime_adjust">
+  <object class="GtkAdjustment" id="xmotor_min_ontime_adjust">
     <property name="lower">0.5</property>
     <property name="upper">64</property>
     <property name="step_increment">0.5</property>

@@ -546,10 +546,10 @@ class Pages:
     # BEGIN: checkbox and hscale handler
     def on_xmotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('x', 'motor_hscale_offtime')
-    def on_xmotor_hscale_mini_offtime_default_toggled(self, *args):
-        self.lock_unlock_scale('x', 'motor_hscale_mini_offtime')
-    def on_xmotor_hscale_mini_ontime_default_toggled(self, *args):
-        self.lock_unlock_scale('x', 'motor_hscale_mini_ontime')
+    def on_xmotor_hscale_min_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('x', 'motor_hscale_min_offtime')
+    def on_xmotor_hscale_min_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('x', 'motor_hscale_min_ontime')
     # hscale handler
     def on_xmotor_hscale_current_value_changed(self, *args):
         self.hscale_value_changed('x', 'motor_hscale_current')
@@ -557,11 +557,11 @@ class Pages:
     def on_xmotor_hscale_offtime_value_changed(self, *args):
         self.hscale_value_changed('x', 'motor_hscale_offtime')
         self.a.update_pps('x')
-    def on_xmotor_hscale_mini_offtime_value_changed(self, *args):
-        self.hscale_value_changed('x', 'motor_hscale_mini_offtime')
+    def on_xmotor_hscale_min_offtime_value_changed(self, *args):
+        self.hscale_value_changed('x', 'motor_hscale_min_offtime')
         self.a.update_pps('x')
-    def on_xmotor_hscale_mini_ontime_value_changed(self, *args):
-        self.hscale_value_changed('x', 'motor_hscale_mini_ontime')
+    def on_xmotor_hscale_min_ontime_value_changed(self, *args):
+        self.hscale_value_changed('x', 'motor_hscale_min_ontime')
         self.a.update_pps('x')
     # combobox handler
     def on_xmotor_combobox_microstep_changed(self, *args):
@@ -590,10 +590,10 @@ class Pages:
     # BEGIN: checkbox and hscale handler
     def on_ymotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('y', 'motor_hscale_offtime')
-    def on_ymotor_hscale_mini_offtime_default_toggled(self, *args):
-        self.lock_unlock_scale('y', 'motor_hscale_mini_offtime')
-    def on_ymotor_hscale_mini_ontime_default_toggled(self, *args):
-        self.lock_unlock_scale('y', 'motor_hscale_mini_ontime')
+    def on_ymotor_hscale_min_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('y', 'motor_hscale_min_offtime')
+    def on_ymotor_hscale_min_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('y', 'motor_hscale_min_ontime')
     # hscale handler
     def on_ymotor_hscale_current_value_changed(self, *args):
         self.hscale_value_changed('y', 'motor_hscale_current')
@@ -601,11 +601,11 @@ class Pages:
     def on_ymotor_hscale_offtime_value_changed(self, *args):
         self.hscale_value_changed('y', 'motor_hscale_offtime')
         self.a.update_pps('y')
-    def on_ymotor_hscale_mini_offtime_value_changed(self, *args):
-        self.hscale_value_changed('y', 'motor_hscale_mini_offtime')
+    def on_ymotor_hscale_min_offtime_value_changed(self, *args):
+        self.hscale_value_changed('y', 'motor_hscale_min_offtime')
         self.a.update_pps('y')
-    def on_ymotor_hscale_mini_ontime_value_changed(self, *args):
-        self.hscale_value_changed('y', 'motor_hscale_mini_ontime')
+    def on_ymotor_hscale_min_ontime_value_changed(self, *args):
+        self.hscale_value_changed('y', 'motor_hscale_min_ontime')
         self.a.update_pps('y')
     # combobox handler
     def on_ymotor_combobox_microstep_changed(self, *args):
@@ -634,10 +634,10 @@ class Pages:
     # BEGIN: checkbox and hscale handler
     def on_zmotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('z', 'motor_hscale_offtime')
-    def on_zmotor_hscale_mini_offtime_default_toggled(self, *args):
-        self.lock_unlock_scale('z', 'motor_hscale_mini_offtime')
-    def on_zmotor_hscale_mini_ontime_default_toggled(self, *args):
-        self.lock_unlock_scale('z', 'motor_hscale_mini_ontime')
+    def on_zmotor_hscale_min_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('z', 'motor_hscale_min_offtime')
+    def on_zmotor_hscale_min_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('z', 'motor_hscale_min_ontime')
     # hscale handler
     def on_zmotor_hscale_current_value_changed(self, *args):
         self.hscale_value_changed('z', 'motor_hscale_current')
@@ -645,11 +645,11 @@ class Pages:
     def on_zmotor_hscale_offtime_value_changed(self, *args):
         self.hscale_value_changed('z', 'motor_hscale_offtime')
         self.a.update_pps('z')
-    def on_zmotor_hscale_mini_offtime_value_changed(self, *args):
-        self.hscale_value_changed('z', 'motor_hscale_mini_offtime')
+    def on_zmotor_hscale_min_offtime_value_changed(self, *args):
+        self.hscale_value_changed('z', 'motor_hscale_min_offtime')
         self.a.update_pps('z')
-    def on_zmotor_hscale_mini_ontime_value_changed(self, *args):
-        self.hscale_value_changed('z', 'motor_hscale_mini_ontime')
+    def on_zmotor_hscale_min_ontime_value_changed(self, *args):
+        self.hscale_value_changed('z', 'motor_hscale_min_ontime')
         self.a.update_pps('z')
     # combobox handler
     def on_zmotor_combobox_microstep_changed(self, *args):
@@ -678,10 +678,10 @@ class Pages:
     # BEGIN: checkbox and hscale handler
     def on_amotor_hscale_offtime_default_toggled(self, *args):
         self.lock_unlock_scale('a', 'motor_hscale_offtime')
-    def on_amotor_hscale_mini_offtime_default_toggled(self, *args):
-        self.lock_unlock_scale('a', 'motor_hscale_mini_offtime')
-    def on_amotor_hscale_mini_ontime_default_toggled(self, *args):
-        self.lock_unlock_scale('a', 'motor_hscale_mini_ontime')
+    def on_amotor_hscale_min_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('a', 'motor_hscale_min_offtime')
+    def on_amotor_hscale_min_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('a', 'motor_hscale_min_ontime')
     # hscale handler
     def on_amotor_hscale_current_value_changed(self, *args):
         self.hscale_value_changed('a', 'motor_hscale_current')
@@ -689,11 +689,11 @@ class Pages:
     def on_amotor_hscale_offtime_value_changed(self, *args):
         self.hscale_value_changed('a', 'motor_hscale_offtime')
         self.a.update_pps('a')
-    def on_amotor_hscale_mini_offtime_value_changed(self, *args):
-        self.hscale_value_changed('a', 'motor_hscale_mini_offtime')
+    def on_amotor_hscale_min_offtime_value_changed(self, *args):
+        self.hscale_value_changed('a', 'motor_hscale_min_offtime')
         self.a.update_pps('a')
-    def on_amotor_hscale_mini_ontime_value_changed(self, *args):
-        self.hscale_value_changed('a', 'motor_hscale_mini_ontime')
+    def on_amotor_hscale_min_ontime_value_changed(self, *args):
+        self.hscale_value_changed('a', 'motor_hscale_min_ontime')
         self.a.update_pps('a')
     # combobox handler
     def on_amotor_combobox_microstep_changed(self, *args):
@@ -747,8 +747,8 @@ class Pages:
                 # turn off checkout box
                 self.w[axis + n + '_default'].set_active(False)
         set_sensitive('motor_hscale_offtime')
-        set_sensitive('motor_hscale_mini_offtime')
-        set_sensitive('motor_hscale_mini_ontime')
+        set_sensitive('motor_hscale_min_offtime')
+        set_sensitive('motor_hscale_min_ontime')
 
     def hscale_value_changed(self, axis, n): 
         w = self.w[axis + n]
@@ -780,8 +780,8 @@ class Pages:
         self.w[axis + 'motor_combobox_microstep'].set_active(index)
         set_value("motor_hscale_current")
         set_value("motor_hscale_offtime")
-        set_value("motor_hscale_mini_offtime")
-        set_value("motor_hscale_mini_ontime")
+        set_value("motor_hscale_min_offtime")
+        set_value("motor_hscale_min_ontime")
         # END: motor setting
         if axis == "a":
             self.w[axis + "screwunits"].set_text(_("degree / rev"))
