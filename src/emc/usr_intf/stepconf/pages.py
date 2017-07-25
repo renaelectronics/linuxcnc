@@ -636,6 +636,33 @@ class Pages:
     def on_zmaxvel_changed(self, *args): self.a.update_pps('z')
     def on_zmaxacc_changed(self, *args): self.a.update_pps('z')
     def on_zaxistest_clicked(self, *args): self.a.test_axis('z')
+    # BEGIN: checkbox and hscale handler
+    def on_zmotor_hscale_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('z', 'motor_hscale_offtime')
+    def on_zmotor_hscale_mini_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('z', 'motor_hscale_mini_offtime')
+    def on_zmotor_hscale_mini_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('z', 'motor_hscale_mini_ontime')
+    # hscale handler
+    def on_zmotor_hscale_current_value_changed(self, *args):
+        self.hscale_value_changed('z', 'motor_hscale_current')
+        self.a.update_pps('z')
+    def on_zmotor_hscale_offtime_value_changed(self, *args):
+        self.hscale_value_changed('z', 'motor_hscale_offtime')
+        self.a.update_pps('z')
+    def on_zmotor_hscale_mini_offtime_value_changed(self, *args):
+        self.hscale_value_changed('z', 'motor_hscale_mini_offtime')
+        self.a.update_pps('z')
+    def on_zmotor_hscale_mini_ontime_value_changed(self, *args):
+        self.hscale_value_changed('z', 'motor_hscale_mini_ontime')
+        self.a.update_pps('z')
+    # combobox handler
+    def on_zmotor_combobox_microstep_changed(self, *args):
+        index =  self.w['zmotor_combobox_microstep'].get_active()
+        self.d['zmicrostep'] = 1 << index
+        self.w['zmicrostep'].set_text("%s" % self.d['zmicrostep'])
+        self.a.update_pps('z')
+    # END: checkbox and hscale handler
 
 #********************
 # AXIS A PAGE
@@ -653,6 +680,33 @@ class Pages:
     def on_amaxvel_changed(self, *args): self.a.update_pps('a')
     def on_amaxacc_changed(self, *args): self.a.update_pps('a')
     def on_aaxistest_clicked(self, *args): self.a.test_axis('a')
+    # BEGIN: checkbox and hscale handler
+    def on_amotor_hscale_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('a', 'motor_hscale_offtime')
+    def on_amotor_hscale_mini_offtime_default_toggled(self, *args):
+        self.lock_unlock_scale('a', 'motor_hscale_mini_offtime')
+    def on_amotor_hscale_mini_ontime_default_toggled(self, *args):
+        self.lock_unlock_scale('a', 'motor_hscale_mini_ontime')
+    # hscale handler
+    def on_amotor_hscale_current_value_changed(self, *args):
+        self.hscale_value_changed('a', 'motor_hscale_current')
+        self.a.update_pps('a')
+    def on_amotor_hscale_offtime_value_changed(self, *args):
+        self.hscale_value_changed('a', 'motor_hscale_offtime')
+        self.a.update_pps('a')
+    def on_amotor_hscale_mini_offtime_value_changed(self, *args):
+        self.hscale_value_changed('a', 'motor_hscale_mini_offtime')
+        self.a.update_pps('a')
+    def on_amotor_hscale_mini_ontime_value_changed(self, *args):
+        self.hscale_value_changed('a', 'motor_hscale_mini_ontime')
+        self.a.update_pps('a')
+    # combobox handler
+    def on_amotor_combobox_microstep_changed(self, *args):
+        index =  self.w['amotor_combobox_microstep'].get_active()
+        self.d['amicrostep'] = 1 << index
+        self.w['amicrostep'].set_text("%s" % self.d['amicrostep'])
+        self.a.update_pps('a')
+    # END: checkbox and hscale handler
 
 #*********************
 # General Axis methods and callbacks

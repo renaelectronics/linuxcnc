@@ -388,10 +388,8 @@ class Data:
         self.yscale = 0
 
         # BEGIN: motor setting
-        # default value
-        # x motor setting
-        self.ymotor_setting_dict = self.read_motor_setting('0')
-        self.xmicrostep = self.ymotor_setting_dict['EEPROM_STEP_MODE']
+        self.ymotor_setting_dict = self.read_motor_setting('1')
+        self.ymicrostep = self.ymotor_setting_dict['EEPROM_STEP_MODE']
         self.ymotor_hscale_current = self.ymotor_setting_dict['EEPROM_TVAL']
         self.ymotor_hscale_offtime = self.ymotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
         self.ymotor_hscale_mini_offtime = self.ymotor_setting_dict['EEPROM_TOFF_MIN']
@@ -414,6 +412,15 @@ class Data:
         self.zlatchdir = 0
         self.zscale = 0
 
+        # BEGIN: motor setting
+        self.zmotor_setting_dict = self.read_motor_setting('2')
+        self.zmicrostep = self.zmotor_setting_dict['EEPROM_STEP_MODE']
+        self.zmotor_hscale_current = self.zmotor_setting_dict['EEPROM_TVAL']
+        self.zmotor_hscale_offtime = self.zmotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
+        self.zmotor_hscale_mini_offtime = self.zmotor_setting_dict['EEPROM_TOFF_MIN']
+        self.zmotor_hscale_mini_ontime = self.zmotor_setting_dict['EEPROM_TON_MIN']
+        # END: motor setting
+
         # set xyz axes defaults depending on units true = imperial
         self.set_axis_unit_defaults(True)
 
@@ -432,6 +439,15 @@ class Data:
         self.ahomevel = .05
         self.alatchdir = 0
         self.ascale = 0
+
+        # BEGIN: motor setting
+        self.amotor_setting_dict = self.read_motor_setting('3')
+        self.amicrostep = self.amotor_setting_dict['EEPROM_STEP_MODE']
+        self.amotor_hscale_current = self.amotor_setting_dict['EEPROM_TVAL']
+        self.amotor_hscale_offtime = self.amotor_setting_dict['EEPROM_CONFIG_CURRENT'] 
+        self.amotor_hscale_mini_offtime = self.amotor_setting_dict['EEPROM_TOFF_MIN']
+        self.amotor_hscale_mini_ontime = self.amotor_setting_dict['EEPROM_TON_MIN']
+        # END: motor setting
 
         self.spindlecarrier = 100
         self.spindlecpr = 100
