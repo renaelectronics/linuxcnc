@@ -482,6 +482,9 @@ class Data:
         cmd_string = cmd_string + str(self[xyza + 'motor_hscale_current'])
         cmd_string = cmd_string + " -s "
         cmd_string = cmd_string + str(int(math.log(self[xyza + 'microstep'], 2)))
+        cmd_string = cmd_string + " --pwm_off " + str(self[xyza + 'motor_hscale_offtime'])
+        cmd_string = cmd_string + " --toff_min " + str(self[xyza + 'motor_hscale_mini_offtime'])
+        cmd_string = cmd_string + " --ton_min " + str(self[xyza + 'motor_hscale_mini_ontime'])
 
         print cmd_string
         #cmd_out = run_cmd(cmd_string)

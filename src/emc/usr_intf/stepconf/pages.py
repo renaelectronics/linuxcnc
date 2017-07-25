@@ -57,16 +57,11 @@ class Pages:
     def page_change(self,widget):
         cur = self.w.notebook1.get_current_page()
         cur_name,cur_text,cur_state = self._p.available_page[cur]
-        # if cur_name is axisx/y/z/a then prompt user to save motor setting
-        if cur_name == 'axisx':
-                if self.a.warning_dialog(self._p.MESS_SAVE_MOTOR_SETTING,False):
-                    self.a.d.write_motor_setting('0')
-        if cur_name == 'axisy':
-                self.a.d.write_motor_setting('1')
-        if cur_name == 'axisz':
-                self.a.d.write_motor_setting('2')
-        if cur_name == 'axisa':
-                self.a.d.write_motor_setting('3')
+        alist = ['axisx', 'axisy', 'axisz', 'axisa']
+        if cur_name in alist:
+            n = alist.index(cur_name)
+            if self.a.warning_dialog(self._p.MESS_SAVE_MOTOR_SETTING,False):
+                    self.a.d.write_motor_setting(str(n))
 
     # seaches (self._p.available_page) from the current page forward,
     # for the next page that is True or till second-to-last page.
