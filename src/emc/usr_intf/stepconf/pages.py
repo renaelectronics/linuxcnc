@@ -50,7 +50,7 @@ class Pages:
     def on_window1_destroy(self, *args):
         if self.a.warning_dialog (self._p.MESS_ABORT,False):
             gtk.main_quit()
-            return True
+            return False 
         else:
             return True
 
