@@ -499,7 +499,6 @@ class Data:
         cmd_string = cmd_string + " --toff_min " + str(self[n + 'motor_hscale_min_offtime'])
         cmd_string = cmd_string + " --ton_min " + str(self[n + 'motor_hscale_min_ontime'])
         # execute command
-        print cmd_string
         cmd_out = run_cmd(cmd_string)
         return
 
