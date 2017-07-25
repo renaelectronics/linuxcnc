@@ -52,7 +52,7 @@ class Pages:
             gtk.main_quit()
             return True
         else:
-            return False
+            return True
 
     def page_change(self,widget):
         cur = self.w.notebook1.get_current_page()
