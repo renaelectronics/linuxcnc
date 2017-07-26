@@ -1,8 +1,0 @@
-Package: renaconf
-Version: 1.0-1
-Section: base
-Priority: optional
-Architecture: i386
-Maintainer: Thomas Tai <thomastai@renaelectronics.com>
-Description: Configure script to set motor setting
- Configure script to set motor setting.
