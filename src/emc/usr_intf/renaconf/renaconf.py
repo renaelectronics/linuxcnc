@@ -522,17 +522,18 @@ class Data:
         EEPROM_MAX_BYTE = (EEPROM_CHECK_SUM + 1*2)
 
         # read motor setting
+        sim_out='000000000000000028192929010888ff2e88000000'
         cmd_string = "wch6474 -r -m " + motor
         cmd_out = run_cmd(cmd_string)
         if not cmd_out:
-            cmd_out='000000000000000028192929010888ff2e88000000'
+            cmd_out = sim_out
 
         # remove all whitespace
         cmd_out = cmd_out.translate(None, string.whitespace)
 
         # check lenght
         if len(cmd_out) != EEPROM_MAX_BYTE:
-            cmd_out='000000000000000028192929010888ff2e88000000'
+            cmd_out = sim_out
 
         # process the data into dictionary
         dict = {}
