@@ -444,9 +444,9 @@ if len(errors) > 0:
   rm.write("The following errors were found during processing.\n")
   rm.write(errors+"\n")
   print errors
-rm.write("This file can be deleted after running the Stepconf Wizard once.\n")
+rm.write("This file can be deleted after running the Renaconf Wizard once.\n")
 rm.write("Copy the generated .renaconf file to the linuxcnc/configs directory.\n")
-rm.write("Run the Stepconf Wizard from the CNC menu.\n")
+rm.write("Run the Renaconf Wizard from the CNC menu.\n")
 rm.write("Select Modify a configuration already created with this program.\n")
 rm.write("Pick the converted file from the list.\n")
 rm.write("If the file did not show up then you have not copied it to the correct directory.\n")

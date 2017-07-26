@@ -171,7 +171,7 @@ class Pages:
         self.w.button_back.set_sensitive(False)
         self.w.label_fwd.set_text(self._p.MESS_START)
         if debug:
-            self.w.window1.set_title('Stepconf -debug mode')
+            self.w.window1.set_title('Renaconf -debug mode')
         # pport1 combo boxes
         model = self.w.output_list
         model.clear()

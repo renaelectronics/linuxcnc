@@ -70,7 +70,7 @@ def excepthook(exc_type, exc_obj, exc_tb):
     m = gtk.MessageDialog(w,
                 gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
                 gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
-                _("Stepconf encountered an error.  The following "
+                _("Renaconf encountered an error.  The following "
                 "information may be useful in troubleshooting:\n\n")
                 + "".join(lines))
     m.show()
@@ -141,7 +141,7 @@ class Private_Data:
     def __init__(self):
         self.in_pport_prepare = True
         self.distdir = distdir
-        self.available_page =[['intro', _('Stepconf'), True],['start', _('Start'), True],
+        self.available_page =[['intro', _('Renaconf'), True],['start', _('Start'), True],
                                 ['base',_('Base Information'),True],['pport1', _('Parallel Port 1'),True],['pport2', _('Parallel Port 2'),True],
                                 ['options',_('Options'), True],['axisx', _('Axis X'), True],
                                 ['axisy', _('Axis Y'), True],['axisz', _('Axis Z'), True],['axisa', _('Axis A'), True],
@@ -236,7 +236,7 @@ class Private_Data:
         self.MESS_CL_EDITED = _("You edited a ladder program and have selected a different program to copy to your configuration file.\nThe edited program will be lost.\n\nAre you sure?  ")
         self.MESS_NO_ESTOP = _("You need to designate an E-stop input pin in the Parallel Port Setup page for this program.")
         self.MESS_PYVCP_REWRITE =_("OK to replace existing custom pyvcp panel and custom_postgui.hal file ?\nExisting custompanel.xml and custom_postgui.hal will be renamed custompanel_backup.xml and postgui_backup.hal.\nAny existing file named custompanel_backup.xml and custom_postgui.hal will be lost. ")
-        self.MESS_ABORT = _("Quit Stepconf and discard changes?")
+        self.MESS_ABORT = _("Quit Renaconf and discard changes?")
         self.MESS_QUIT = _("The configuration has been built and saved.\nDo you want to quit?")
         self.MESS_NO_REALTIME = _("You are using a simulated-realtime version of LinuxCNC, so testing / tuning of hardware is unavailable.")
         self.MESS_KERNEL_WRONG = _("You are using a realtime version of LinuxCNC but didn't load a realtime kernel so testing / tuning of hardware is\
@@ -847,7 +847,7 @@ class Data:
             print >>file,"Exec=%s %s/%s.ini" \
                          % ( scriptspath, base, self.machinename )
             print >>file,"Type=Application"
-            print >>file,"Comment=" + _("Desktop Launcher for LinuxCNC config made by Stepconf")
+            print >>file,"Comment=" + _("Desktop Launcher for LinuxCNC config made by Renaconf")
             print >>file,"Icon=%s"% linuxcncicon
             file.close()
             # Ubuntu 10.04 require launcher to have execute permissions
@@ -874,7 +874,7 @@ class Widgets:
         if r is None: raise IndexError, "No widget %r" % attr
         return r
 
-class StepconfApp:
+class RenaconfApp:
  
     def __init__(self, dbgstate):
         global debug
@@ -1715,13 +1715,13 @@ class StepconfApp:
 
 # starting with 'renaconf -d' gives debug messages
 if __name__ == "__main__":
-    usage = "usage: Stepconf -[options]"
+    usage = "usage: Renaconf -[options]"
     parser = OptionParser(usage=usage)
     parser.add_option("-d", action="store_true", dest="debug",help="Print debug info and ignore realtime/kernel tests")
     (options, args) = parser.parse_args()
     if options.debug:
-        app = StepconfApp(dbgstate=True)
+        app = RenaconfApp(dbgstate=True)
     else:
-        app = StepconfApp(False)
+        app = RenaconfApp(False)
     gtk.main()
 

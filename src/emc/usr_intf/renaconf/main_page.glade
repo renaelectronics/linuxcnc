@@ -420,7 +420,7 @@
     <property name="step_increment">1</property>
   </object>
   <object class="GtkWindow" id="window1">
-    <property name="title" translatable="yes">Stepconf -Stepper Configuration Wizard</property>
+    <property name="title" translatable="yes">Renaconf -Stepper Configuration Wizard</property>
     <property name="resizable">False</property>
     <property name="window_position">center</property>
     <signal name="destroy_event" handler="on_window1_destroy"/>
@@ -604,7 +604,7 @@
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">This program creates configuration files (.ini and .hal) for "step and direction" milling machines and lathes connected to the PC parallel port.
 
-Stepconf requires a minimum 800 X 600 display resolution.</property>
+Renaconf requires a minimum 800 X 600 display resolution.</property>
                     <property name="wrap">True</property>
                   </object>
                   <packing>
