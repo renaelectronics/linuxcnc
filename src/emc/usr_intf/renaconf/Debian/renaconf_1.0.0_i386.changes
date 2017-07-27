@@ -9,20 +9,20 @@ Urgency: low
 Maintainer: thomastai <thomastai@renaelectronics.com>
 Changed-By: thomastai <thomastai@renaelectronics.com>
 Description: 
- renaconf   - <insert up to 60 chars description>
+ renaconf   - Utility for Rena Electronics PCIe Stepper Driver
 Changes: 
  renaconf (1.0.0) unstable; urgency=low
  .
    * Initial Release.
 Checksums-Sha1: 
- 58414918cd538dc6ccd4339355f5620c737256be 565 renaconf_1.0.0.dsc
- a451e03345bbed087639c3e74ff636f870c4a735 69429 renaconf_1.0.0.tar.gz
- e92da042f5610e87a922005c542b3206d56a0812 60526 renaconf_1.0.0_i386.deb
+ 9ca79ec23215a4b8bfcda6719bb4ed27ce3d7968 550 renaconf_1.0.0.dsc
+ abe5987d0f6ab11d288c83ad3f23d9afd877ebfb 69429 renaconf_1.0.0.tar.gz
+ eb98232747f58d7f3414f93d345803668da7f680 60532 renaconf_1.0.0_i386.deb
 Checksums-Sha256: 
- b881b987d358f18bcbacd76b31b05362feb94b8e93d13d7a715725fd03bbdb7f 565 renaconf_1.0.0.dsc
- a53089c66aee6f4e7ebe94a7958cabae38d3ab9b227743187d127f5b5d10380a 69429 renaconf_1.0.0.tar.gz
- 6e16eba93843cd983ecdfbde83f4b0880f1a48a7fc8ff967767ef405ed67352f 60526 renaconf_1.0.0_i386.deb
+ c1a3a6477aa087072c4e3ee280ab456e8c67b15e34b2da249a33e371646c0824 550 renaconf_1.0.0.dsc
+ d847f5dea316d84489a0096e03c208a9dc50f232d21366a39991bb5f459a3a50 69429 renaconf_1.0.0.tar.gz
+ a409c981a767ffc211182e8539ab363bfebae08c6a6e111061400ef26b3f7a82 60532 renaconf_1.0.0_i386.deb
 Files: 
- e819c73a65f6775d2f69330838deb7d5 565 unknown extra renaconf_1.0.0.dsc
- c208c827373338d8944e89c3ec0ebfd2 69429 unknown extra renaconf_1.0.0.tar.gz
- db633251afa4ebd33a095e31acadae48 60526 unknown extra renaconf_1.0.0_i386.deb
+ d5b1baab75466e2f310d8b56caeaedee 550 unknown extra renaconf_1.0.0.dsc
+ 676cbad8c94b0ca3398996d927f110da 69429 unknown extra renaconf_1.0.0.tar.gz
+ 2260d611607d071fad4eac2ac0adf7cf 60532 unknown extra renaconf_1.0.0_i386.deb

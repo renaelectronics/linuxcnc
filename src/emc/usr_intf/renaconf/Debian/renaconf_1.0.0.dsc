@@ -4,14 +4,14 @@ Binary: renaconf
 Architecture: any
 Version: 1.0.0
 Maintainer: thomastai <thomastai@renaelectronics.com>
-Homepage: <insert the upstream URL, if relevant>
+Homepage: www.renaelectronics.com
 Standards-Version: 3.9.3
 Build-Depends: debhelper (>= 8.0.0)
 Package-List: 
  renaconf deb unknown extra
 Checksums-Sha1: 
- a451e03345bbed087639c3e74ff636f870c4a735 69429 renaconf_1.0.0.tar.gz
+ abe5987d0f6ab11d288c83ad3f23d9afd877ebfb 69429 renaconf_1.0.0.tar.gz
 Checksums-Sha256: 
- a53089c66aee6f4e7ebe94a7958cabae38d3ab9b227743187d127f5b5d10380a 69429 renaconf_1.0.0.tar.gz
+ d847f5dea316d84489a0096e03c208a9dc50f232d21366a39991bb5f459a3a50 69429 renaconf_1.0.0.tar.gz
 Files: 
- c208c827373338d8944e89c3ec0ebfd2 69429 renaconf_1.0.0.tar.gz
+ 676cbad8c94b0ca3398996d927f110da 69429 renaconf_1.0.0.tar.gz
