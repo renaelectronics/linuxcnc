@@ -15,14 +15,14 @@ Changes:
  .
    * Initial Release.
 Checksums-Sha1: 
- 9ca79ec23215a4b8bfcda6719bb4ed27ce3d7968 550 renaconf_1.0.0.dsc
- abe5987d0f6ab11d288c83ad3f23d9afd877ebfb 69429 renaconf_1.0.0.tar.gz
- eb98232747f58d7f3414f93d345803668da7f680 60532 renaconf_1.0.0_i386.deb
+ 33f05f26676edb8bd889699cf9f1f5cdbc6d028e 550 renaconf_1.0.0.dsc
+ 384f720badb89d328d5fd35b46d161a942847b8b 85352 renaconf_1.0.0.tar.gz
+ fa8d0b748030d1c5b987fb7ce74d3c11fc67acdd 76456 renaconf_1.0.0_i386.deb
 Checksums-Sha256: 
- c1a3a6477aa087072c4e3ee280ab456e8c67b15e34b2da249a33e371646c0824 550 renaconf_1.0.0.dsc
- d847f5dea316d84489a0096e03c208a9dc50f232d21366a39991bb5f459a3a50 69429 renaconf_1.0.0.tar.gz
- a409c981a767ffc211182e8539ab363bfebae08c6a6e111061400ef26b3f7a82 60532 renaconf_1.0.0_i386.deb
+ d9cff240e5c75449dadebf243ded1213e4c2d45cc08d814c4f67ca7e283a9cbf 550 renaconf_1.0.0.dsc
+ 602ac02b8c984cdc43e406cf825629b0d65ae8bfe92e0f5d2a62d1081ad52b0e 85352 renaconf_1.0.0.tar.gz
+ e88acd80ee6c7a25c2542469d7094e432f221df9b0933e18f8016ac30dbaf483 76456 renaconf_1.0.0_i386.deb
 Files: 
- d5b1baab75466e2f310d8b56caeaedee 550 unknown extra renaconf_1.0.0.dsc
- 676cbad8c94b0ca3398996d927f110da 69429 unknown extra renaconf_1.0.0.tar.gz
- 2260d611607d071fad4eac2ac0adf7cf 60532 unknown extra renaconf_1.0.0_i386.deb
+ fe76a4f2ec5156db9c44cef778d87eca 550 unknown extra renaconf_1.0.0.dsc
+ e3823d53fa2ba604443cad1227c0f3c9 85352 unknown extra renaconf_1.0.0.tar.gz
+ b8838b8970d84542661d535b7dbdf4b1 76456 unknown extra renaconf_1.0.0_i386.deb

@@ -769,6 +769,12 @@ class Data:
             pin = "pin%d" % p
             p = self[pin]
 
+        # read motor setting
+        self.read_motor_setting('0')
+        self.read_motor_setting('1')
+        self.read_motor_setting('2')
+        self.read_motor_setting('3')
+
     def save(self,basedir):
         base = basedir
         self.md5sums = []
