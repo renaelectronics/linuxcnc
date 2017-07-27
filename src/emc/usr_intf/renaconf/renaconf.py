@@ -770,10 +770,10 @@ class Data:
             p = self[pin]
 
         # read motor setting
-        self.read_motor_setting('0')
-        self.read_motor_setting('1')
-        self.read_motor_setting('2')
-        self.read_motor_setting('3')
+        self.xmotor_setting_dict = self.read_motor_setting('0')
+        self.ymotor_setting_dict = self.read_motor_setting('1')
+        self.zmotor_setting_dict = self.read_motor_setting('2')
+        self.amotor_setting_dict = self.read_motor_setting('3')
 
     def save(self,basedir):
         base = basedir
