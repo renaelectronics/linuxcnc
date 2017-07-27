@@ -473,9 +473,6 @@ class Data:
         n = xyza[int(motor)]
         # compare motor setting with dictionary
         dict = self[n + 'motor_setting_dict']
-        print dict
-        print xmicrostep
-        print n
         if self[n + 'microstep'] != dict['EEPROM_STEP_MODE']:
             return True
         if self[n + 'motor_hscale_current'] != dict['EEPROM_TVAL']:
@@ -773,11 +770,10 @@ class Data:
             p = self[pin]
 
         # read motor setting
-        print "###" + "read motor setting"
-        self.read_motor_setting('0')
-        self.read_motor_setting('1')
-        self.read_motor_setting('2')
-        self.read_motor_setting('3')
+        self.xmotor_setting_dict = self.read_motor_setting('0')
+        self.ymotor_setting_dict = self.read_motor_setting('1')
+        self.zmotor_setting_dict = self.read_motor_setting('2')
+        self.amotor_setting_dict = self.read_motor_setting('3')
 
     def save(self,basedir):
         base = basedir
