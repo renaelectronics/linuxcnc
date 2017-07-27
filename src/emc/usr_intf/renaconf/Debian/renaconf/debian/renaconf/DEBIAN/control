@@ -3,7 +3,6 @@ Version: 1.0.0
 Architecture: i386
 Maintainer: thomastai <thomastai@renaelectronics.com>
 Installed-Size: 660
-Depends: 2.6, 2.7, python, python-support (>= 0.90.0)
 Section: unknown
 Priority: extra
 Homepage: <insert the upstream URL, if relevant>
