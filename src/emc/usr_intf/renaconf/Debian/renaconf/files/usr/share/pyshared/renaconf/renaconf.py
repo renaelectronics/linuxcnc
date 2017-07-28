@@ -477,7 +477,7 @@ class Data:
             return True
         if self[n + 'motor_hscale_current'] != dict['EEPROM_TVAL']:
             return True
-        if self[n + 'motor_hscale_offtime'] != dict['EEPROM_CONFIG_CURRENT']:
+        if self[n + 'motor_hscale_offtime'] != dict['EEPROM_CONFIG_TOFF']:
             return True
         if self[n + 'motor_hscale_min_offtime'] != dict['EEPROM_TOFF_MIN']:
             return True
@@ -492,7 +492,7 @@ class Data:
         n = xyza[int(motor)]
         # build the command string
         cmd_string = cmd_string + " -c "
-        cmd_string = cmd_string + str(self[n+ 'motor_hscale_current'])
+        cmd_string = cmd_string + str(self[n + 'motor_hscale_current'])
         cmd_string = cmd_string + " -s "
         cmd_string = cmd_string + str(int(math.log(self[n + 'microstep'], 2)))
         cmd_string = cmd_string + " --pwm_off " + str(self[n + 'motor_hscale_offtime'])
@@ -522,7 +522,7 @@ class Data:
         EEPROM_MAX_BYTE = (EEPROM_CHECK_SUM + 1*2)
 
         # read motor setting
-        sim_out='000000000000000028192929010888ff2e88000000'
+        sim_out='000000000000000000190000010888ff0688000000'
         cmd_string = "wch6474 -r -m " + motor
         cmd_out = run_cmd(cmd_string)
         if not cmd_out:
@@ -554,10 +554,10 @@ class Data:
         # convert raw data into interge or float
         dict['EEPROM_TVAL'] = 0.03125 * int(dict['EEPROM_TVAL'], 16)
         dict['EEPROM_STEP_MODE'] = 1 << (int(dict['EEPROM_STEP_MODE'], 16) & 0x7)
-        # motor current is stored in the upper 6 bits of EEPROM_CONFIG
-        dict['EEPROM_CONFIG_CURRENT'] = 4 * (int(dict['EEPROM_CONFIG'], 16) >> 10)
-        if dict['EEPROM_CONFIG_CURRENT'] == 0:
-            dict['EEPROM_CONFIG_CURRENT'] = 4
+        # motor offtime is stored in the upper 6 bits of EEPROM_CONFIG
+        dict['EEPROM_CONFIG_TOFF'] = 4 * (int(dict['EEPROM_CONFIG'], 16) >> 10)
+        if dict['EEPROM_CONFIG_TOFF'] == 0:
+            dict['EEPROM_CONFIG_TOFF'] = 4
         dict['EEPROM_TOFF_MIN'] = 0.5 * (int(dict['EEPROM_TOFF_MIN'], 16) + 1)
         dict['EEPROM_TON_MIN'] = 0.5 * (int(dict['EEPROM_TON_MIN'], 16) + 1)
 
@@ -566,7 +566,7 @@ class Data:
         n = xyza[int(motor)]
         self[n + 'microstep'] = dict['EEPROM_STEP_MODE']
         self[n + 'motor_hscale_current'] = dict['EEPROM_TVAL']
-        self[n + 'motor_hscale_offtime'] = dict['EEPROM_CONFIG_CURRENT'] 
+        self[n + 'motor_hscale_offtime'] = dict['EEPROM_CONFIG_TOFF'] 
         self[n + 'motor_hscale_min_offtime'] = dict['EEPROM_TOFF_MIN']
         self[n + 'motor_hscale_min_ontime'] = dict['EEPROM_TON_MIN']
         return dict
