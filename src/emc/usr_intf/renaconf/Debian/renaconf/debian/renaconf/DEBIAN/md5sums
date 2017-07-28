@@ -1,4 +1,4 @@
-fb38987a785a33c272fea1b324ac7952  usr/bin/renaconf
+a0d52c6bf27a252bcdcc40d773650091  usr/bin/renaconf
 ee5326eb4f6076a0dd744b897cbd1a3c  usr/share/doc/renaconf/README.Debian
 c66f98dc4415fab355b35e70a59ac249  usr/share/doc/renaconf/changelog.gz
 fe69e7733a314e6fc9d1d5fa98bb953f  usr/share/doc/renaconf/copyright
@@ -18,5 +18,5 @@ f914f478874786481c82ce7798270e28  usr/share/linuxcnc/renaconf/start.glade
 6c8f255d52b5cadcc10a8f7bee17a400  usr/share/pyshared/renaconf/build_INI.py
 d88058cf57acbbc980ef9e062464a691  usr/share/pyshared/renaconf/import_mach.py
 c34948c5778d59bb35885cfa509414a1  usr/share/pyshared/renaconf/pages.py
-fb38987a785a33c272fea1b324ac7952  usr/share/pyshared/renaconf/renaconf.py
+a0d52c6bf27a252bcdcc40d773650091  usr/share/pyshared/renaconf/renaconf.py
 24b03147583f8aa8fb2081286333a117  usr/share/python-support/renaconf.public

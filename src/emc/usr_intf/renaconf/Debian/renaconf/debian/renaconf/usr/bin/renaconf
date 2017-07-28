@@ -1124,7 +1124,7 @@ class RenaconfApp:
         SIG = self._p
         def index(signal):
             return self._p.hal_output_names.index(signal)
-        self.w.pin1.set_active(index(SIG.ESTOP))
+        self.w.pin1.set_active(index(SIG.AMP))
         self.w.pin1inv.set_active(1)
         self.w.pin2.set_active(index(SIG.XSTEP))
         self.w.pin3.set_active(index(SIG.XDIR))
