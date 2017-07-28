@@ -552,7 +552,7 @@ class Data:
         dict['EEPROM_STATUS'] = cmd_out[EEPROM_STATUS:EEPROM_CHECK_SUM]
 
         # convert raw data into interge or float
-        dict['EEPROM_TVAL'] = 0.03125 * int(dict['EEPROM_TVAL'], 16)
+        dict['EEPROM_TVAL'] = 0.03125 * (int(dict['EEPROM_TVAL'], 16) + 1)
         dict['EEPROM_STEP_MODE'] = 1 << (int(dict['EEPROM_STEP_MODE'], 16) & 0x7)
         # motor offtime is stored in the upper 6 bits of EEPROM_CONFIG
         dict['EEPROM_CONFIG_TOFF'] = 4 * (int(dict['EEPROM_CONFIG'], 16) >> 10)
