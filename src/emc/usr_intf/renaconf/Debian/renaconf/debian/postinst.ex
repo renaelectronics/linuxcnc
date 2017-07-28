@@ -36,31 +36,4 @@ esac
 
 #DEBHELPER#
 
-# create soft link
-D='/usr/lib/pymodules/python2.7/renaconf'
-S='/usr/share/pyshared/renaconf'
-
-# list of files
-files=("build_HAL.py" "build_INI.py" "pages.py" "import_mach.py")
-
-# remove existing softlink
-if [ -d ${D} ]; then
-	for i in "${files[@]}"
-	do
-		rm -f ${D}/${i}
-	done
-	rm -f ${D}/__init__.py
-else
-	mkdir -p ${D}
-fi
-
-# create special file
-touch ${D}/__init__.py
-
-# create softlink
-for i in "${files[@]}"
-do
-	ln -s ${S}/${i} ${D}/${i}
-done
-
 exit 0
