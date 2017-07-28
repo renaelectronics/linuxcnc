@@ -492,7 +492,7 @@ class Data:
         n = xyza[int(motor)]
         # build the command string
         cmd_string = cmd_string + " -c "
-        cmd_string = cmd_string + str(self[n+ 'motor_hscale_current'])
+        cmd_string = cmd_string + str(self[n + 'motor_hscale_current'])
         cmd_string = cmd_string + " -s "
         cmd_string = cmd_string + str(int(math.log(self[n + 'microstep'], 2)))
         cmd_string = cmd_string + " --pwm_off " + str(self[n + 'motor_hscale_offtime'])
