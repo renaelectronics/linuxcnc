@@ -2,7 +2,7 @@ Package: renaconf
 Version: 1.0.0
 Architecture: i386
 Maintainer: thomastai <thomastai@renaelectronics.com>
-Installed-Size: 734
+Installed-Size: 718
 Section: unknown
 Priority: extra
 Homepage: www.renaelectronics.com
