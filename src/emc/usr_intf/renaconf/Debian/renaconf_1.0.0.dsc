@@ -10,8 +10,8 @@ Build-Depends: debhelper (>= 8.0.0)
 Package-List: 
  renaconf deb unknown extra
 Checksums-Sha1: 
- 29d66276cdc067e275daebb99da0fbf7359633c2 85151 renaconf_1.0.0.tar.gz
+ 461e0cbf1cb0778b2ed24890cc5d9d0daa09d782 85176 renaconf_1.0.0.tar.gz
 Checksums-Sha256: 
- 3683903ddd1e0e305073a2e7afb6545107cfe0372b69e1e2ad897208b9923594 85151 renaconf_1.0.0.tar.gz
+ 5d7e8b4566a2990d6bf6212a4ca6270ded8fe1f0e7e93a1a31be799e30c036ca 85176 renaconf_1.0.0.tar.gz
 Files: 
- 89a231c00748baf2710b037d5635c5d6 85151 renaconf_1.0.0.tar.gz
+ 03f7b3658ec024f8bfce6f038a2b57d0 85176 renaconf_1.0.0.tar.gz
